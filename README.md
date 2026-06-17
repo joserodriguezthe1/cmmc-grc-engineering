@@ -86,29 +86,33 @@ CMMC Project/
 
 ---
 
-## Quick start
+## Deploy
 
-> **Prerequisites:** an AWS account, AWS CLI v2 configured, Terraform >= 1.6, and
-> (optionally) `git`, `python3`, and `tflint`/`checkov` for the CI checks.
+The control baseline is deployed with Terraform and stays Free-Tier-safe by
+default (paid services are feature-flagged off). Review the
+[reference architecture](docs/architecture/architecture.md) and the
+[Free Tier cost notes](docs/architecture/free-tier-cost-notes.md) before applying.
+
+> **Prerequisites:** an AWS account, AWS CLI v2 configured, Terraform >= 1.6,
+> Python 3.12. `make` targets wrap the common steps (`make help` lists them).
 
 ```bash
-# 1. Review and bootstrap the Terraform state backend (one-time)
-bash scripts/bootstrap-backend.sh
-
-# 2. Initialize and review the plan
+make validate                         # terraform + OSCAL schema + 110-practice check
 cd terraform/environments/dev
-terraform init
-terraform plan
-
-# 3. Apply the baseline security controls
-terraform apply
-
-# 4. Deploy the continuous-monitoring conformance pack
-bash policy-as-code/deploy-conformance-pack.sh
-
-# 5. Collect a round of evidence
-python evidence/automation/collect_evidence.py
+cp terraform.tfvars.example terraform.tfvars   # set alert_email
+terraform init && terraform plan      # review the baseline
+terraform apply                       # deploy the Free-Tier-safe controls
 ```
+
+```bash
+# Optional: turn on continuous monitoring + collect evidence, then turn it off
+terraform apply -var="enable_config=true" -var="enable_guardduty=true"
+bash ../../policy-as-code/deploy-conformance-pack.sh
+python ../../evidence/automation/collect_evidence.py
+terraform apply -var="enable_config=false" -var="enable_guardduty=false"
+```
+
+When you're done, `make destroy` tears everything down to avoid charges.
 
 ---
 
