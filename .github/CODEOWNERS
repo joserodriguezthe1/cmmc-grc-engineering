@@ -1,0 +1,8 @@
+# Require review on changes to the compliance baseline and infrastructure.
+# Replace @your-handle with your GitHub username (and add reviewers as needed).
+
+*                       @your-handle
+/oscal/                 @your-handle
+/terraform/             @your-handle
+/.github/               @your-handle
+/policy-as-code/        @your-handle
