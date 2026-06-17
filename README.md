@@ -116,6 +116,39 @@ When you're done, `make destroy` tears everything down to avoid charges.
 
 ---
 
+## Proof it runs (live AWS deployment)
+
+This isn't a paper exercise — the baseline was deployed to a real AWS account and
+the full GRC loop was exercised end to end. (Account IDs and ARNs redacted.)
+
+**1. Enforce — Terraform deploys the controls, drift-free**
+
+![terraform plan shows no drift](docs/evidence-samples/shot-1-drift-free.jpg)
+
+**2. Monitor — AWS Config continuously verifies the controls (CA.L2-3.12.3)**
+
+The CMMC conformance pack's rules evaluate **Compliant** — CloudTrail log-file
+validation, IAM password policy, root access-key checks, GuardDuty enabled, and more:
+
+![AWS Config rules compliant](docs/evidence-samples/shot-4-config-rules-compliant.png)
+
+**3. Detect — GuardDuty watching the environment (SI.L2-3.14.6/3.14.7)**
+
+![GuardDuty active](docs/evidence-samples/shot-5-guardduty.png)
+
+**4. Evidence — collected automatically (CA.L2-3.12.1)**
+
+![automated evidence collection](docs/evidence-samples/shot-2-evidence-collection.jpg)
+
+**5. Validate — OSCAL is schema-valid and complete (CA.L2-3.12.4)**
+
+![OSCAL validation passes](docs/evidence-samples/shot-7-validation-gates.jpg)
+
+> More captures (conformance pack, evidence artifact, status roll-up) are in
+> [docs/evidence-samples/](docs/evidence-samples/).
+
+---
+
 ## AWS Free Tier posture
 
 This project is deliberately built to demonstrate CMMC controls **without a large

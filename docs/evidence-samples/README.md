@@ -6,12 +6,17 @@ Drop **sanitized** screenshots/artifacts here to embed in the README, e.g.:
 ![AWS Config conformance pack mapped to CMMC](docs/evidence-samples/config-conformance.png)
 ```
 
-Suggested filenames:
+Captured from a live AWS deployment (account IDs/ARNs redacted):
 
-- `ci-green.png` — green compliance-ci checks
-- `config-conformance.png` — Config conformance pack CMMC-L2
-- `make-validate.png` — OSCAL schema PASS + 110/14
-- `status-report.png` — domain roll-up
+- `shot-1-drift-free.jpg` — `terraform plan` shows no drift
+- `shot-2-evidence-collection.jpg` — automated evidence collector
+- `shot-3-config-conformance-pack.png` — Config conformance pack `CMMC`
+- `shot-4-config-rules-compliant.png` — Config rules evaluating Compliant
+- `shot-5-guardduty.png` — GuardDuty active
+- `shot-6-evidence-artifact.jpg` — evidence JSON artifact
+- `shot-7-validation-gates.jpg` — OSCAL schema validation PASS
+- `shot-8-ci-green.png` — green compliance-ci run
+- `shot-9-status-rollup.png` — status roll-up by domain
 
 > 🔒 Redact account IDs, ARNs, and emails first. Unlike `evidence/collected/`
 > (gitignored), this folder **is** committed — so only put deliberately
