@@ -56,15 +56,15 @@ python ../scripts/validate_oscal.py        # -> all 6 docs PASS
 # Status roll-up + 110-practice integrity check (CI gate)
 python ../scripts/status_report.py
 python ../scripts/status_report.py --check
-
-# Authoritative validation incl. regex/format (Java tool; advisory job in CI)
-oscal-cli ssp validate ssp/cmmc-l2-ssp.json   # github.com/usnistgov/oscal-cli
 ```
 
-> `scripts/validate_oscal.py` checks structure (required fields, types,
-> `additionalProperties`, enums) against the official schema. It skips XSD-style
-> `\p{...}` regex patterns that Python can't compile, so for authoritative
-> regex/format checks use `oscal-cli` (wired as an advisory CI job).
+> `scripts/validate_oscal.py` validates structure (required fields, types,
+> `additionalProperties`, enums) against the official NIST schema, **plus** UUID
+> and ISO-8601 datetime formats via targeted regex. (The schema's XSD-style
+> `\p{...}` patterns are stripped because Python's `re` can't compile them; the
+> added format checks recover the important ones.) It's a pure-Python gate with
+> no external tool dependency, so CI is reliable. For an additional authoritative
+> pass you can optionally run the Java `oscal-cli` locally if you have it.
 
 > Edit these as JSON, or with an OSCAL-aware tool such as
 > [compliance-trestle](https://github.com/oscal-compass/compliance-trestle).
