@@ -28,6 +28,10 @@ evidence/collected/*
 # Cached OSCAL schema (downloaded by scripts/validate_oscal.py)
 scripts/.oscal_complete_schema.json
 
+# Personal playbooks — kept local, not published to GitHub
+docs/runbook-deploy.md
+docs/screenshot-guide.md
+
 # Python
 __pycache__/
 *.py[cod]
