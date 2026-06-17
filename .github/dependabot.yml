@@ -1,0 +1,20 @@
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: "ci"
+  - package-ecosystem: terraform
+    directory: "/terraform/environments/dev"
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: "deps"
+  - package-ecosystem: pip
+    directory: "/evidence/automation"
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: "deps"

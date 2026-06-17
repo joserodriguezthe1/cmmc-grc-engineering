@@ -1,0 +1,96 @@
+# =============================================================================
+# CMMC GRC Engineering — compliance CI
+# Enforces change control on the compliance baseline (CM.L2-3.4.3/3.4.4/3.4.5:
+# track, analyze, and restrict changes via reviewed, CI-gated pull requests).
+# =============================================================================
+name: compliance-ci
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  terraform:
+    name: Terraform fmt & validate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.6.6
+      - name: fmt
+        run: terraform fmt -recursive -check
+      - name: init (no backend)
+        working-directory: terraform/environments/dev
+        run: terraform init -backend=false
+      - name: validate
+        working-directory: terraform/environments/dev
+        run: terraform validate
+
+  oscal:
+    name: OSCAL validation (schema + completeness)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install jsonschema
+      - name: Validate OSCAL against official NIST schema (structural)
+        run: python scripts/validate_oscal.py
+      - name: SSP completeness (110 practices, 14 domains)
+        run: python scripts/status_report.py --check
+
+  oscal-cli:
+    name: OSCAL authoritative validation (oscal-cli) [advisory]
+    runs-on: ubuntu-latest
+    continue-on-error: true # advisory until verified locally, then make it required
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - name: Install oscal-cli (latest release)
+        run: |
+          url=$(curl -s https://api.github.com/repos/usnistgov/oscal-cli/releases/latest \
+            | grep browser_download_url | grep -- '-oscal-cli.zip' | head -1 | cut -d'"' -f4)
+          curl -L -o oscal-cli.zip "$url"
+          unzip -q oscal-cli.zip -d oscal-cli
+      - name: Validate each OSCAL document
+        run: |
+          BIN=oscal-cli/bin/oscal-cli
+          $BIN catalog validate oscal/catalogs/NIST_SP800-171_rev2_catalog.json
+          $BIN profile validate oscal/profile/cmmc-l2-profile.json
+          $BIN component-definition validate oscal/component-definitions/aws-components.json
+          $BIN component-definition validate oscal/component-definitions/policies.json
+          $BIN ssp validate oscal/ssp/cmmc-l2-ssp.json
+          $BIN poam validate oscal/poam/cmmc-l2-poam.json
+
+  iac-security-scan:
+    name: Checkov IaC scan (triaged)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run Checkov
+        uses: bridgecrewio/checkov-action@master
+        with:
+          directory: terraform
+          framework: terraform
+          config_file: .checkov.yaml
+          soft_fail: true # findings are triaged in .checkov.yaml; reported, not blocking
+
+  evidence-collector-lint:
+    name: Lint evidence collector
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install boto3
+      - run: python -m py_compile evidence/automation/collect_evidence.py

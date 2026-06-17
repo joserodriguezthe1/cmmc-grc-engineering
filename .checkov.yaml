@@ -1,0 +1,29 @@
+# Checkov configuration — triaged IaC security findings.
+#
+# GRC engineering is about *triaging* findings with justification, not silencing
+# them blindly. Each skip below is an accepted, documented risk decision for this
+# Free-Tier reference environment. Reconcile this list against the actual scan
+# output after your first `make scan` / CI run, and remove any that don't apply.
+directory:
+  - terraform
+framework:
+  - terraform
+# Report all findings; the design exceptions below are accepted risks.
+soft-fail: true
+skip-check:
+  # Cost-driven: CloudWatch retention kept short for Free Tier. Authoritative,
+  # tamper-evident copy is the CloudTrail S3 archive with 365-day Object Lock.
+  - CKV_AWS_338 # Ensure CloudWatch Log Group retained for at least 1 year
+  # Flow-log CloudWatch group is not CMK-encrypted (no CUI in flow metadata);
+  # CMK reserved for the CUI data path to keep to 1 KMS key (~$1/mo).
+  - CKV_AWS_158 # Ensure CloudWatch Log Group is encrypted by KMS
+  # Single-region/Free-Tier demo: cross-region replication & access logging on
+  # the demo buckets are out of scope (documented in docs/architecture).
+  - CKV_AWS_18  # Ensure S3 bucket has access logging
+  - CKV_AWS_144 # Ensure S3 bucket has cross-region replication
+  - CKV2_AWS_62 # Ensure S3 buckets have event notifications
+  # Starter IAM boundary/MFA policy uses scoped wildcards constrained by
+  # conditions; tighten per-role before production (tracked as a hardening item).
+  - CKV_AWS_111 # Ensure IAM policies do not allow write access without constraints
+  - CKV_AWS_109 # Ensure IAM policies do not allow permissions management without constraints
+  - CKV_AWS_356 # Ensure IAM policies limit resource scope on a single statement
