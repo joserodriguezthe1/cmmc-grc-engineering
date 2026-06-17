@@ -119,33 +119,50 @@ When you're done, `make destroy` tears everything down to avoid charges.
 ## Proof it runs (live AWS deployment)
 
 This isn't a paper exercise — the baseline was deployed to a real AWS account and
-the full GRC loop was exercised end to end. (Account IDs and ARNs redacted.)
+the **entire GRC loop** was exercised end to end. (Account IDs and ARNs redacted.)
 
-**1. Enforce — Terraform deploys the controls, drift-free**
+### 1. Enforce — Terraform deploys the controls, drift-free (CM.L2-3.4.2)
+
+`terraform plan` against the live environment reports no drift:
 
 ![terraform plan shows no drift](docs/evidence-samples/shot-1-drift-free.jpg)
 
-**2. Monitor — AWS Config continuously verifies the controls (CA.L2-3.12.3)**
+### 2. Monitor — AWS Config continuously verifies the controls (CA.L2-3.12.3)
 
-The CMMC conformance pack's rules evaluate **Compliant** — CloudTrail log-file
-validation, IAM password policy, root access-key checks, GuardDuty enabled, and more:
+The CMMC conformance pack deploys…
+
+![AWS Config conformance pack mapped to CMMC](docs/evidence-samples/shot-3-config-conformance-pack.png)
+
+…and its rules evaluate **Compliant** — CloudTrail log-file validation, IAM
+password policy, root access-key checks, GuardDuty enabled, and more:
 
 ![AWS Config rules compliant](docs/evidence-samples/shot-4-config-rules-compliant.png)
 
-**3. Detect — GuardDuty watching the environment (SI.L2-3.14.6/3.14.7)**
+### 3. Detect — GuardDuty watching the environment (SI.L2-3.14.6/3.14.7)
 
 ![GuardDuty active](docs/evidence-samples/shot-5-guardduty.png)
 
-**4. Evidence — collected automatically (CA.L2-3.12.1)**
+### 4. Evidence — collected automatically (CA.L2-3.12.1)
+
+A read-only collector snapshots the live control state…
 
 ![automated evidence collection](docs/evidence-samples/shot-2-evidence-collection.jpg)
 
-**5. Validate — OSCAL is schema-valid and complete (CA.L2-3.12.4)**
+…into a timestamped, machine-readable artifact:
+
+![evidence JSON artifact](docs/evidence-samples/shot-6-evidence-artifact.jpg)
+
+### 5. Govern — OSCAL validated, status tracked, every change CI-gated
+
+OSCAL is schema-valid and all 110 practices are accounted for (CA.L2-3.12.4):
 
 ![OSCAL validation passes](docs/evidence-samples/shot-7-validation-gates.jpg)
 
-> More captures (conformance pack, evidence artifact, status roll-up) are in
-> [docs/evidence-samples/](docs/evidence-samples/).
+![status roll-up by domain](docs/evidence-samples/shot-9-status-rollup.png)
+
+…and every change is gated in CI before merge (CM.L2-3.4.3/3.4.5):
+
+![green compliance-ci run](docs/evidence-samples/shot-8-ci-green.png)
 
 ---
 
