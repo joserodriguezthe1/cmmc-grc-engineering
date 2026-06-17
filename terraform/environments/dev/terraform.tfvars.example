@@ -1,0 +1,13 @@
+# Copy to terraform.tfvars and edit. terraform.tfvars is gitignored.
+aws_region          = "us-east-1"
+environment         = "dev"
+alert_email         = "you@example.com"
+log_retention_days  = 30
+
+# Keep these OFF to stay in the Free Tier. Flip on to demo + collect evidence.
+enable_config       = false
+enable_guardduty    = false
+enable_security_hub = false
+
+enable_billing_alarm = true
+monthly_budget_usd   = 5
