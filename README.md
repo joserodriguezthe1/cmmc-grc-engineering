@@ -1,7 +1,7 @@
 # CMMC GRC Engineering Project
 
-<!-- After pushing to GitHub, replace OWNER/REPO so these badges render live. -->
-[![compliance-ci](https://github.com/OWNER/REPO/actions/workflows/compliance-ci.yml/badge.svg)](https://github.com/OWNER/REPO/actions/workflows/compliance-ci.yml)
+<!-- After pushing to GitHub, replace joserodriguezthe1/cmmc-grc-engineering so these badges render live. -->
+[![compliance-ci](https://github.com/joserodriguezthe1/cmmc-grc-engineering/actions/workflows/compliance-ci.yml/badge.svg)](https://github.com/joserodriguezthe1/cmmc-grc-engineering/actions/workflows/compliance-ci.yml)
 ![CMMC](https://img.shields.io/badge/CMMC-Level%202-blue)
 ![NIST 800-171](https://img.shields.io/badge/NIST%20SP%20800--171-Rev.%202-blue)
 ![OSCAL](https://img.shields.io/badge/OSCAL-1.1.2%20schema--valid-success)
