@@ -1,0 +1,36 @@
+{
+  "profile": {
+    "uuid": "4fd3eb79-9865-44b0-b658-ced30cf02aa9",
+    "metadata": {
+      "title": "CMMC Level 2 Profile (NIST SP 800-171 Rev. 2)",
+      "last-modified": "2026-06-17T00:07:25Z",
+      "version": "0.1",
+      "oscal-version": "1.1.2"
+    },
+    "imports": [
+      {
+        "href": "../catalogs/NIST_SP800-171_rev2_catalog.json",
+        "include-all": {}
+      }
+    ],
+    "merge": {
+      "as-is": true
+    },
+    "back-matter": {
+      "resources": [
+        {
+          "uuid": "2b1e9ad5-1dba-4862-b4a1-50423e1c925a",
+          "title": "NIST SP 800-171 Rev. 2 (normative source)",
+          "citation": {
+            "text": "NIST SP 800-171 Rev. 2. NIST publishes only Rev. 3 in OSCAL; CMMC L2 is assessed against Rev. 2, so this profile imports a local Rev. 2 catalog generated for id-level traceability."
+          },
+          "rlinks": [
+            {
+              "href": "https://doi.org/10.6028/NIST.SP.800-171r2"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

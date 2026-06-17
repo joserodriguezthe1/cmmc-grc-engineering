@@ -1,0 +1,4523 @@
+{
+  "system-security-plan": {
+    "uuid": "01cb03bc-849c-491e-ad93-465d3d1e83c4",
+    "metadata": {
+      "title": "CMMC Level 2 System Security Plan",
+      "last-modified": "2026-06-17T00:07:25Z",
+      "version": "0.1",
+      "oscal-version": "1.1.2",
+      "roles": [
+        {
+          "id": "system-owner",
+          "title": "System Owner"
+        },
+        {
+          "id": "iso",
+          "title": "Information Security Officer"
+        },
+        {
+          "id": "cloud-engineer",
+          "title": "Cloud Engineer"
+        }
+      ],
+      "parties": [
+        {
+          "uuid": "5b384fa0-6671-4dab-8a35-f8f9d6c668b7",
+          "type": "organization",
+          "name": "[Your Organization]"
+        }
+      ],
+      "responsible-parties": [
+        {
+          "role-id": "system-owner",
+          "party-uuids": [
+            "5b384fa0-6671-4dab-8a35-f8f9d6c668b7"
+          ]
+        },
+        {
+          "role-id": "iso",
+          "party-uuids": [
+            "5b384fa0-6671-4dab-8a35-f8f9d6c668b7"
+          ]
+        }
+      ]
+    },
+    "import-profile": {
+      "href": "../profile/cmmc-l2-profile.json"
+    },
+    "system-characteristics": {
+      "system-ids": [
+        {
+          "id": "cmmc-l2-cui-enclave"
+        }
+      ],
+      "system-name": "[CUI Enclave / System Name]",
+      "description": "AWS-hosted CUI enclave implementing CMMC Level 2 (NIST SP 800-171 Rev. 2). See oscal/ and terraform/.",
+      "security-sensitivity-level": "moderate",
+      "system-information": {
+        "information-types": [
+          {
+            "uuid": "94e48ae2-26d3-4c9e-a876-5052c58bf9de",
+            "title": "Controlled Unclassified Information (CUI)",
+            "description": "Federal CUI processed, stored, or transmitted by the system.",
+            "confidentiality-impact": {
+              "base": "fips-199-moderate"
+            },
+            "integrity-impact": {
+              "base": "fips-199-moderate"
+            },
+            "availability-impact": {
+              "base": "fips-199-moderate"
+            }
+          }
+        ]
+      },
+      "security-impact-level": {
+        "security-objective-confidentiality": "fips-199-moderate",
+        "security-objective-integrity": "fips-199-moderate",
+        "security-objective-availability": "fips-199-moderate"
+      },
+      "status": {
+        "state": "under-development"
+      },
+      "authorization-boundary": {
+        "description": "Single AWS account (CUI/workload) plus a separate log-archive account. SCPs enforce the boundary. Out-of-scope assets have no IAM/network path to CUI."
+      }
+    },
+    "system-implementation": {
+      "users": [
+        {
+          "uuid": "ada7dc4e-d11b-4aaa-8312-adab65281757",
+          "title": "Privileged administrator",
+          "role-ids": [
+            "cloud-engineer"
+          ],
+          "authorized-privileges": [
+            {
+              "title": "Full administrative access",
+              "functions-performed": [
+                "system administration"
+              ]
+            }
+          ]
+        }
+      ],
+      "components": [
+        {
+          "uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+          "type": "system",
+          "title": "CMMC L2 CUI Enclave (this system)",
+          "description": "The overall AWS environment defined by this project.",
+          "status": {
+            "state": "under-development"
+          }
+        }
+      ]
+    },
+    "control-implementation": {
+      "description": "Implementation of all 110 CMMC L2 practices. Status, AWS service, and evidence location are carried as props on each implemented-requirement.",
+      "implemented-requirements": [
+        {
+          "uuid": "aed7af27-c25e-4eaa-a5cb-1772787bc8b0",
+          "control-id": "3.1.1",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "AC.L2-3.1.1"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "AC - Access Control"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "partial"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "terraform/modules/iam"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "fef883ed-68a1-4a2f-b203-ce12ff5e6e52",
+              "description": "Limit system access to authorized users and devices. AWS: IAM / SSO / Organizations. Type: Technical. Evidence: terraform/modules/iam.",
+              "implementation-status": {
+                "state": "partial"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "71169c53-1082-4b70-9589-41e510241060",
+          "control-id": "3.1.2",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "AC.L2-3.1.2"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "AC - Access Control"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "partial"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "terraform/modules/iam"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "4c3fea81-7804-4018-9707-b76e0aa7e097",
+              "description": "Limit access to the types of transactions and functions authorized users may execute. AWS: IAM policies / SCPs. Type: Technical. Evidence: terraform/modules/iam.",
+              "implementation-status": {
+                "state": "partial"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "68fbedbb-ffa6-45f7-b4ef-c12d4c98ca8f",
+          "control-id": "3.1.3",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "AC.L2-3.1.3"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "AC - Access Control"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "terraform/modules/storage"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "48f387dd-3077-4697-9106-8336db0feeae",
+              "description": "Control the flow of CUI in accordance with approved authorizations. AWS: VPC / Security Groups / S3 policies. Type: Technical. Evidence: terraform/modules/storage.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "c2c69331-1c50-4aaa-bba0-9edde6de9c24",
+          "control-id": "3.1.4",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "AC.L2-3.1.4"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "AC - Access Control"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical/Admin"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "terraform/modules/iam"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "920a598b-14d7-4bae-902a-a72cbf847c45",
+              "description": "Separate the duties of individuals to reduce risk of malevolent activity. AWS: IAM roles / permission boundaries. Type: Technical/Admin. Evidence: terraform/modules/iam.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "f2aa783a-a390-4a68-8977-4d6cce3e0086",
+          "control-id": "3.1.5",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "AC.L2-3.1.5"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "AC - Access Control"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "partial"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "terraform/modules/iam"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "7cb16b9e-6d21-402c-a803-5ed73b7b094e",
+              "description": "Employ least privilege including for privileged accounts. AWS: IAM Access Analyzer / permission boundaries. Type: Technical. Evidence: terraform/modules/iam.",
+              "implementation-status": {
+                "state": "partial"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "730b64e1-7d40-42c0-8bbc-df378864dd8c",
+          "control-id": "3.1.6",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "AC.L2-3.1.6"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "AC - Access Control"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Admin"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "oscal/component-definitions/policies.json"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "4381b04b-a8e2-4c1c-b2e1-26d24df5a867",
+              "description": "Use non-privileged accounts for non-security functions. AWS: IAM. Type: Admin. Evidence: oscal/component-definitions/policies.json.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "f207092e-ea03-4e98-b892-74bed909da76",
+          "control-id": "3.1.7",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "AC.L2-3.1.7"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "AC - Access Control"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "terraform/modules/logging"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "7255f888-f9cb-4113-96cf-ea1b95d24d02",
+              "description": "Prevent non-privileged users from executing privileged functions; capture in audit logs. AWS: IAM / CloudTrail. Type: Technical. Evidence: terraform/modules/logging.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "e285e442-5d53-40d6-808a-7664dd6d7440",
+          "control-id": "3.1.8",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "AC.L2-3.1.8"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "AC - Access Control"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "oscal/component-definitions/policies.json"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "e2b6ada5-55da-46b8-a92b-ff9027a34208",
+              "description": "Limit unsuccessful logon attempts. AWS: Cognito / IAM / IdP policy. Type: Technical. Evidence: oscal/component-definitions/policies.json.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "a9796ef0-7650-4445-94e9-3f47797154fa",
+          "control-id": "3.1.9",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "AC.L2-3.1.9"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "AC - Access Control"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Admin"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "oscal/component-definitions/policies.json"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "1676d3e1-6f94-4a4b-92a2-82fd6cf8ac4c",
+              "description": "Provide privacy and security notices consistent with CUI rules. AWS: Login banner / IdP. Type: Admin. Evidence: oscal/component-definitions/policies.json.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "586c26b3-f286-40a4-b329-0ee2c781bb8a",
+          "control-id": "3.1.10",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "AC.L2-3.1.10"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "AC - Access Control"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "oscal/component-definitions/policies.json"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "a10bb5c2-cf72-47e6-9a2b-f2423a8d98ef",
+              "description": "Use session lock with pattern-hiding after inactivity. AWS: IdP / endpoint config. Type: Technical. Evidence: oscal/component-definitions/policies.json.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "f019d6ba-ac4b-410f-ae97-1e7bb8f520d3",
+          "control-id": "3.1.11",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "AC.L2-3.1.11"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "AC - Access Control"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "terraform/modules/iam"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "adef5ded-a45a-4d95-8b29-dd68e0dfa329",
+              "description": "Terminate user sessions after a defined condition. AWS: IAM session duration / STS. Type: Technical. Evidence: terraform/modules/iam.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "a33b7142-7f4b-4c12-b844-73d70fc2f8a7",
+          "control-id": "3.1.12",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "AC.L2-3.1.12"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "AC - Access Control"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "terraform/modules/security"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "baeeafe4-88c7-40bf-b931-fc11439a0449",
+              "description": "Monitor and control remote access sessions. AWS: VPN / Systems Manager Session Manager. Type: Technical. Evidence: terraform/modules/security.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "54722667-b68e-4e1e-969a-bf43313424d6",
+          "control-id": "3.1.13",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "AC.L2-3.1.13"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "AC - Access Control"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "terraform/modules/security"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "8b4472f4-5ca6-4f0b-8f73-5b4a3f1758c2",
+              "description": "Use cryptographic mechanisms to protect remote access sessions. AWS: TLS / SSM Session Manager. Type: Technical. Evidence: terraform/modules/security.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "9a3b6d92-e113-4220-aa89-c70caa09541a",
+          "control-id": "3.1.14",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "AC.L2-3.1.14"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "AC - Access Control"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "terraform/modules/networking"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "d0799b01-b93a-4814-9e49-5313139342c9",
+              "description": "Route remote access via managed access control points. AWS: VPC / Transit Gateway / SSM. Type: Technical. Evidence: terraform/modules/networking.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "3398c0d0-9900-4fbb-8e43-d699d1ba3e28",
+          "control-id": "3.1.15",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "AC.L2-3.1.15"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "AC - Access Control"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Admin/Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "oscal/component-definitions/policies.json"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "d55bd3ec-bc10-4914-acd2-42d47f1be3ec",
+              "description": "Authorize remote execution of privileged commands and remote access to security info. AWS: IAM / SSM. Type: Admin/Technical. Evidence: oscal/component-definitions/policies.json.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "37e42fc2-90a8-4f13-97a4-4ddb49c3b27a",
+          "control-id": "3.1.16",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "AC.L2-3.1.16"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "AC - Access Control"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Admin"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "oscal/component-definitions/policies.json"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "6c7e8d28-9c18-4b3b-8711-ec11da23e3bf",
+              "description": "Authorize wireless access prior to allowing connections. AWS: N/A (on-prem). Type: Admin. Evidence: oscal/component-definitions/policies.json.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "f61e0446-bc99-4a5a-aec1-ae9dbe79d2e9",
+          "control-id": "3.1.17",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "AC.L2-3.1.17"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "AC - Access Control"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Admin"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "oscal/component-definitions/policies.json"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "a206329f-6ab7-49ee-8b17-2e2df405d105",
+              "description": "Protect wireless access using authentication and encryption. AWS: N/A (on-prem). Type: Admin. Evidence: oscal/component-definitions/policies.json.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "45cf59f1-89f9-486c-92d2-39372e8a3902",
+          "control-id": "3.1.18",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "AC.L2-3.1.18"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "AC - Access Control"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Admin"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "oscal/component-definitions/policies.json"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "4fbb27d6-da97-49a7-9072-06e973eb267e",
+              "description": "Control connection of mobile devices. AWS: MDM. Type: Admin. Evidence: oscal/component-definitions/policies.json.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "39f1619c-13ec-4ec8-b5f6-aad1502062a5",
+          "control-id": "3.1.19",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "AC.L2-3.1.19"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "AC - Access Control"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "oscal/component-definitions/policies.json"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "94ce8cf6-7568-4c0d-b81b-84f441d594b0",
+              "description": "Encrypt CUI on mobile devices and platforms. AWS: MDM / endpoint encryption. Type: Technical. Evidence: oscal/component-definitions/policies.json.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "b9d2312a-8d00-49c3-91dd-5dc6f23be4f3",
+          "control-id": "3.1.20",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "AC.L2-3.1.20"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "AC - Access Control"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "terraform/modules/networking"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "e5fb443a-9069-4954-af40-2c0a9b8d0bed",
+              "description": "Verify and control connections to external systems. AWS: SCPs / S3 policies / VPC endpoints. Type: Technical. Evidence: terraform/modules/networking.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "4545ab03-c09f-419e-a815-fc147f50c05d",
+          "control-id": "3.1.21",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "AC.L2-3.1.21"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "AC - Access Control"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Admin"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "oscal/component-definitions/policies.json"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "f7be4b05-ac29-43b8-a060-153749ca6d0f",
+              "description": "Limit use of portable storage devices on external systems. AWS: Endpoint policy. Type: Admin. Evidence: oscal/component-definitions/policies.json.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "c9bc65f5-4855-4033-beab-e224ef0d8282",
+          "control-id": "3.1.22",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "AC.L2-3.1.22"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "AC - Access Control"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "partial"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "terraform/modules/storage"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "8415b570-554a-4637-917b-889eb5900091",
+              "description": "Control CUI posted or processed on publicly accessible systems. AWS: S3 Block Public Access / Config. Type: Technical. Evidence: terraform/modules/storage.",
+              "implementation-status": {
+                "state": "partial"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "5119f129-d899-464a-b359-1f1deefa8f94",
+          "control-id": "3.2.1",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "AT.L2-3.2.1"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "AT - Awareness and Training"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Admin"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "oscal/component-definitions/policies.json"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "d6e9c42d-06cc-4d4c-adf0-95b33941dcda",
+              "description": "Ensure personnel are aware of security risks and applicable policies. AWS: Training platform. Type: Admin. Evidence: oscal/component-definitions/policies.json.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "f062d2ac-acb6-416f-8c62-a3044ccaf54b",
+          "control-id": "3.2.2",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "AT.L2-3.2.2"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "AT - Awareness and Training"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Admin"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "oscal/component-definitions/policies.json"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "1e873196-9e1a-469e-ae2e-ad003c3e8bdd",
+              "description": "Ensure personnel are trained to carry out their security duties. AWS: Training platform. Type: Admin. Evidence: oscal/component-definitions/policies.json.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "ae25eeea-2c7d-4ad0-875c-27f7fe09a11a",
+          "control-id": "3.2.3",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "AT.L2-3.2.3"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "AT - Awareness and Training"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Admin"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "oscal/component-definitions/policies.json"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "e12ca3f0-2d7a-4862-862a-41972d7e9a96",
+              "description": "Provide security awareness training on recognizing insider threat. AWS: Training platform. Type: Admin. Evidence: oscal/component-definitions/policies.json.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "bc2dd89a-153e-40c9-9036-378f6aeb09c8",
+          "control-id": "3.3.1",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "AU.L2-3.3.1"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "AU - Audit and Accountability"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "partial"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "terraform/modules/logging"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "877eb62c-b673-4a69-9b20-45b7c256fb18",
+              "description": "Create and retain system audit logs sufficient for monitoring and investigation. AWS: CloudTrail / CloudWatch Logs / S3. Type: Technical. Evidence: terraform/modules/logging.",
+              "implementation-status": {
+                "state": "partial"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "ab3aa10b-8f6b-4926-a012-d2b173f99fe3",
+          "control-id": "3.3.2",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "AU.L2-3.3.2"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "AU - Audit and Accountability"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "partial"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "terraform/modules/logging"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "453f007f-d092-478e-9391-2b0aae4b9fcc",
+              "description": "Ensure actions can be traced to individual users for accountability. AWS: CloudTrail (identity) / IAM. Type: Technical. Evidence: terraform/modules/logging.",
+              "implementation-status": {
+                "state": "partial"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "2596422e-b525-47d9-8b8b-d79aa8548eec",
+          "control-id": "3.3.3",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "AU.L2-3.3.3"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "AU - Audit and Accountability"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Admin/Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "evidence/automation"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "62bfeb8a-ee3d-47bd-b5b0-702cbe2fd2a2",
+              "description": "Review and update logged events. AWS: CloudWatch / Config. Type: Admin/Technical. Evidence: evidence/automation.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "804aa5f8-9b3a-49c6-971e-297049e5dd81",
+          "control-id": "3.3.4",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "AU.L2-3.3.4"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "AU - Audit and Accountability"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "terraform/modules/logging"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "42f9f196-6ead-42ee-8556-810ca26e2742",
+              "description": "Alert in the event of an audit logging process failure. AWS: CloudWatch Alarms / SNS. Type: Technical. Evidence: terraform/modules/logging.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "ffc57bba-7b48-4f46-91c6-f9cbccace5b5",
+          "control-id": "3.3.5",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "AU.L2-3.3.5"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "AU - Audit and Accountability"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "terraform/modules/security"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "f01ee10d-b2f1-46a5-a623-77064d4c958f",
+              "description": "Correlate audit review/analysis for investigation and response. AWS: CloudWatch Logs Insights / Security Hub. Type: Technical. Evidence: terraform/modules/security.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "24715a8f-21c9-4818-83a9-a0def10b588f",
+          "control-id": "3.3.6",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "AU.L2-3.3.6"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "AU - Audit and Accountability"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "evidence/automation"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "d8725d98-2a95-498f-a637-483b7e9ca534",
+              "description": "Provide audit record reduction and report generation. AWS: Athena / CloudWatch Insights. Type: Technical. Evidence: evidence/automation.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "c63390af-099d-4351-98c3-b7730ce6ea40",
+          "control-id": "3.3.7",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "AU.L2-3.3.7"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "AU - Audit and Accountability"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "terraform/modules/logging"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "8ce95b20-a091-4e43-b815-7007b096f341",
+              "description": "Provide a system capability that compares to an authoritative time source. AWS: Amazon Time Sync / NTP. Type: Technical. Evidence: terraform/modules/logging.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "527c4091-4ad3-49a7-af15-769faf7206cb",
+          "control-id": "3.3.8",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "AU.L2-3.3.8"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "AU - Audit and Accountability"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "terraform/modules/logging"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "7aa3cec5-a567-4a6a-badd-634684eaa90a",
+              "description": "Protect audit information and tools from unauthorized access/modification. AWS: S3 Object Lock / KMS / IAM. Type: Technical. Evidence: terraform/modules/logging.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "920496b2-90cd-4bd4-8b29-41f71845fe33",
+          "control-id": "3.3.9",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "AU.L2-3.3.9"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "AU - Audit and Accountability"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "terraform/modules/iam"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "1e15b57f-5211-41bf-97c7-c3a2bbc9c687",
+              "description": "Limit management of audit logging to a subset of privileged users. AWS: IAM policies. Type: Technical. Evidence: terraform/modules/iam.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "80d9e3a2-d5ba-4372-ac15-81170029cc1e",
+          "control-id": "3.4.1",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "CM.L2-3.4.1"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "CM - Configuration Management"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "partial"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "policy-as-code"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "8a191e9c-58be-4dfc-a128-ec6c5ac90d10",
+              "description": "Establish and maintain baseline configurations and inventories. AWS: Config / Systems Manager Inventory. Type: Technical. Evidence: policy-as-code.",
+              "implementation-status": {
+                "state": "partial"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "341fa7fa-f5c9-4acf-931c-cec56404384a",
+          "control-id": "3.4.2",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "CM.L2-3.4.2"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "CM - Configuration Management"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "partial"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "policy-as-code"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "4d03b376-79ab-445a-bc32-03c38fc349e7",
+              "description": "Establish and enforce security configuration settings. AWS: Config Rules / SSM State Manager. Type: Technical. Evidence: policy-as-code.",
+              "implementation-status": {
+                "state": "partial"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "835c4d7e-443e-4a92-9ee7-eee7acaf1f62",
+          "control-id": "3.4.3",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "CM.L2-3.4.3"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "CM - Configuration Management"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "partial"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "pipelines"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "17a92558-776e-4579-aa3d-d7cdd09b0012",
+              "description": "Track review approve and log changes to systems. AWS: CloudTrail / Config / Git. Type: Technical. Evidence: pipelines.",
+              "implementation-status": {
+                "state": "partial"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "818f245c-57b6-4ecc-8a98-af3bdd1eca32",
+          "control-id": "3.4.4",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "CM.L2-3.4.4"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "CM - Configuration Management"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Admin"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "pipelines"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "b3655f2a-7778-4feb-9809-6a37df4f2a7f",
+              "description": "Analyze security impact of changes prior to implementation. AWS: Change mgmt / PR review. Type: Admin. Evidence: pipelines.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "cb54ad26-f718-4194-8f8b-82b8ffceb702",
+          "control-id": "3.4.5",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "CM.L2-3.4.5"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "CM - Configuration Management"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "pipelines"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "23a7901b-e442-43a5-9d57-bb8ad3cf26c3",
+              "description": "Define approve and enforce access restrictions for changes. AWS: IAM / branch protection. Type: Technical. Evidence: pipelines.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "fdd83a34-4f1d-4436-a265-894afc457775",
+          "control-id": "3.4.6",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "CM.L2-3.4.6"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "CM - Configuration Management"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "terraform/modules/networking"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "d957bcf8-6870-4907-aa98-5f90692d66e2",
+              "description": "Employ least functionality (essential capabilities only). AWS: Security Groups / SSM. Type: Technical. Evidence: terraform/modules/networking.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "f7ac620e-5ac3-45ac-a49b-b75ca08f6288",
+          "control-id": "3.4.7",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "CM.L2-3.4.7"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "CM - Configuration Management"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "terraform/modules/networking"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "1d02362e-85d9-4c6f-b2cf-35167530593f",
+              "description": "Restrict disable or prevent nonessential programs ports protocols services. AWS: Security Groups / Config. Type: Technical. Evidence: terraform/modules/networking.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "db0e7c2b-dc70-4c21-94aa-fcbee30b6a8d",
+          "control-id": "3.4.8",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "CM.L2-3.4.8"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "CM - Configuration Management"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "terraform/modules/iam"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "b1eb958f-0c4d-4c16-babd-8954c88f70ad",
+              "description": "Apply deny-by-exception (blacklist) or permit-by-exception (whitelist) policy. AWS: SCPs / Security Groups. Type: Technical. Evidence: terraform/modules/iam.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "07ad326b-9d5b-4b9d-a868-1e36be69ebd1",
+          "control-id": "3.4.9",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "CM.L2-3.4.9"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "CM - Configuration Management"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "oscal/component-definitions/policies.json"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "4b7e842e-e889-40e8-9560-236c090adb91",
+              "description": "Control and monitor user-installed software. AWS: SSM / endpoint policy. Type: Technical. Evidence: oscal/component-definitions/policies.json.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "213bb49a-e3d1-45fa-b23b-e1a2321ecd13",
+          "control-id": "3.5.1",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "IA.L2-3.5.1"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "IA - Identification and Authentication"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "partial"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "terraform/modules/iam"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "405542b0-aabd-4125-b0cf-12207661a5e6",
+              "description": "Identify system users processes and devices. AWS: IAM / IAM Roles / Cognito. Type: Technical. Evidence: terraform/modules/iam.",
+              "implementation-status": {
+                "state": "partial"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "025738b0-03a2-42ea-baa1-8e3fc88fb52e",
+          "control-id": "3.5.2",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "IA.L2-3.5.2"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "IA - Identification and Authentication"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "partial"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "terraform/modules/iam"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "cceb5206-7cce-4c7a-a81d-3706efc68cf1",
+              "description": "Authenticate identities as a prerequisite to system access. AWS: IAM / IdP / Cognito. Type: Technical. Evidence: terraform/modules/iam.",
+              "implementation-status": {
+                "state": "partial"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "891bb82c-0a1d-4228-92ee-c87c3ee6e826",
+          "control-id": "3.5.3",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "IA.L2-3.5.3"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "IA - Identification and Authentication"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "partial"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "terraform/modules/iam"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "0d28896c-0b59-48c0-8878-9aae95a0daec",
+              "description": "Use multifactor authentication for privileged and network access. AWS: IAM MFA / IdP MFA. Type: Technical. Evidence: terraform/modules/iam.",
+              "implementation-status": {
+                "state": "partial"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "5aab7da7-2609-4cfd-9913-614d68040fa8",
+          "control-id": "3.5.4",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "IA.L2-3.5.4"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "IA - Identification and Authentication"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "terraform/modules/iam"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "c2f46170-abac-4248-a107-9b0101190f1e",
+              "description": "Employ replay-resistant authentication mechanisms. AWS: IAM / TLS / TOTP. Type: Technical. Evidence: terraform/modules/iam.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "700eeb19-3f42-457f-86b9-a40b776c1edb",
+          "control-id": "3.5.5",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "IA.L2-3.5.5"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "IA - Identification and Authentication"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "oscal/component-definitions/policies.json"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "09cffca7-d038-4217-b746-082d00fadd6a",
+              "description": "Prevent reuse of identifiers for a defined period. AWS: IAM / IdP. Type: Technical. Evidence: oscal/component-definitions/policies.json.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "7eb187e7-776b-4021-810f-b0ff78deea9a",
+          "control-id": "3.5.6",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "IA.L2-3.5.6"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "IA - Identification and Authentication"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "evidence/automation"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "4ff70aa4-29ca-41c2-9357-fe5b34e3db9d",
+              "description": "Disable identifiers after a defined period of inactivity. AWS: IAM Access Analyzer / credential report. Type: Technical. Evidence: evidence/automation.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "6ae43db0-f546-4aa1-a9f1-8ee86b54b19e",
+          "control-id": "3.5.7",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "IA.L2-3.5.7"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "IA - Identification and Authentication"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "partial"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "terraform/modules/iam"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "31a114a4-6de7-431d-96da-9488e329649b",
+              "description": "Enforce a minimum password complexity. AWS: IAM password policy. Type: Technical. Evidence: terraform/modules/iam.",
+              "implementation-status": {
+                "state": "partial"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "679bd1b3-85d1-4a56-94b0-ef9f134c1f11",
+          "control-id": "3.5.8",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "IA.L2-3.5.8"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "IA - Identification and Authentication"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "partial"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "terraform/modules/iam"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "ae9c835d-4838-4cc2-9c14-dc7d6a8fe364",
+              "description": "Prohibit password reuse for a specified number of generations. AWS: IAM password policy. Type: Technical. Evidence: terraform/modules/iam.",
+              "implementation-status": {
+                "state": "partial"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "b54d579f-0b09-4548-865e-dcebc5b6f9ec",
+          "control-id": "3.5.9",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "IA.L2-3.5.9"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "IA - Identification and Authentication"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "terraform/modules/iam"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "52ac7d6c-1a86-436c-bb9c-ac0882dd6ede",
+              "description": "Allow temporary password use with immediate change to permanent. AWS: IAM password policy. Type: Technical. Evidence: terraform/modules/iam.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "a3f52918-9a75-471c-b69d-38e3eb0a2564",
+          "control-id": "3.5.10",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "IA.L2-3.5.10"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "IA - Identification and Authentication"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "terraform/modules/iam"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "851e8445-deb9-419f-bc9a-8f7aca961263",
+              "description": "Store and transmit only cryptographically-protected passwords. AWS: IAM / KMS / TLS. Type: Technical. Evidence: terraform/modules/iam.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "dbf99463-faa6-4584-b804-5d1f1d891814",
+          "control-id": "3.5.11",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "IA.L2-3.5.11"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "IA - Identification and Authentication"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "oscal/component-definitions/policies.json"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "9f0084ac-3f05-43b6-b8ea-cd99d3ae4b4e",
+              "description": "Obscure feedback of authentication information. AWS: IdP / app config. Type: Technical. Evidence: oscal/component-definitions/policies.json.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "2cf7074e-f42b-427d-8a62-20c5d1901940",
+          "control-id": "3.6.1",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "IR.L2-3.6.1"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "IR - Incident Response"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Admin/Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "oscal/component-definitions/policies.json"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "94ae6c55-d41b-4269-aab7-0a924a73d530",
+              "description": "Establish an operational incident-handling capability. AWS: Security Hub / SNS / runbooks. Type: Admin/Technical. Evidence: oscal/component-definitions/policies.json.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "bd78eaea-f2ba-4cc0-bbf1-141225e5ca0b",
+          "control-id": "3.6.2",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "IR.L2-3.6.2"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "IR - Incident Response"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Admin"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "oscal/component-definitions/policies.json"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "4815e842-d6dc-488f-a6c7-d57ad2dd7fc7",
+              "description": "Track document and report incidents to designated officials. AWS: Ticketing / SNS. Type: Admin. Evidence: oscal/component-definitions/policies.json.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "790dd214-0ff4-4c5f-b157-40cedff6e3d7",
+          "control-id": "3.6.3",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "IR.L2-3.6.3"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "IR - Incident Response"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Admin"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "oscal/component-definitions/policies.json"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "28dd75e5-040e-475e-8145-ecaf57b87fcb",
+              "description": "Test the organizational incident response capability. AWS: Tabletop exercises. Type: Admin. Evidence: oscal/component-definitions/policies.json.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "e7ed28cb-f30a-44fb-82fc-16c943725d8a",
+          "control-id": "3.7.1",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "MA.L2-3.7.1"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "MA - Maintenance"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Admin"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "oscal/component-definitions/policies.json"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "1f5af26c-1ad0-4d38-839f-5aed7e1fc8e1",
+              "description": "Perform maintenance on organizational systems. AWS: SSM Patch Manager. Type: Admin. Evidence: oscal/component-definitions/policies.json.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "35e7ce6f-6ba8-4dd7-96c1-e5236c40dfe9",
+          "control-id": "3.7.2",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "MA.L2-3.7.2"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "MA - Maintenance"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Admin"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "oscal/component-definitions/policies.json"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "41f93251-0bdb-411e-aee6-1139282774e9",
+              "description": "Provide controls on the tools techniques and personnel used for maintenance. AWS: SSM / IAM. Type: Admin. Evidence: oscal/component-definitions/policies.json.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "b74d5544-5470-4256-aeb1-0af5da635614",
+          "control-id": "3.7.3",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "MA.L2-3.7.3"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "MA - Maintenance"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Admin"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "oscal/component-definitions/policies.json"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "70be8aad-55fc-46c3-8124-90cbd30f8fab",
+              "description": "Sanitize equipment removed for off-site maintenance of CUI. AWS: Media sanitization process. Type: Admin. Evidence: oscal/component-definitions/policies.json.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "c13c0595-3d5b-4acd-8e87-1333c08a83a4",
+          "control-id": "3.7.4",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "MA.L2-3.7.4"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "MA - Maintenance"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Admin"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "oscal/component-definitions/policies.json"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "4b7833e7-d48a-405b-ac3e-2d0d32600fb0",
+              "description": "Check media containing diagnostic/test programs for malicious code. AWS: Endpoint AV. Type: Admin. Evidence: oscal/component-definitions/policies.json.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "d47662a9-c586-457f-80c3-8c6c430e91d0",
+          "control-id": "3.7.5",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "MA.L2-3.7.5"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "MA - Maintenance"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "terraform/modules/security"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "1c6c2fba-8a1e-4fa0-83b9-fe8e253d32e3",
+              "description": "Require MFA to establish nonlocal maintenance sessions. AWS: SSM Session Manager / MFA. Type: Technical. Evidence: terraform/modules/security.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "0da852c2-c1e8-422e-b3d1-a337ba602c24",
+          "control-id": "3.7.6",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "MA.L2-3.7.6"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "MA - Maintenance"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Admin"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "oscal/component-definitions/policies.json"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "9254e39d-6d26-418f-bdda-3654ff97ea5f",
+              "description": "Supervise maintenance activities of personnel without required access. AWS: Process. Type: Admin. Evidence: oscal/component-definitions/policies.json.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "79e74be7-3f27-48b3-96df-b3d3bb75cddb",
+          "control-id": "3.8.1",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "MP.L2-3.8.1"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "MP - Media Protection"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "terraform/modules/storage"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "e2b6c4db-d3e1-41e1-9c4a-a6709f5a9986",
+              "description": "Protect system media containing CUI (paper and digital). AWS: KMS / S3 encryption. Type: Technical. Evidence: terraform/modules/storage.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "3cccdcdd-bae0-4bfc-ba4e-67f40269686d",
+          "control-id": "3.8.2",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "MP.L2-3.8.2"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "MP - Media Protection"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "terraform/modules/storage"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "969b67e0-f30b-4db9-bf6f-e02c9b20d9f7",
+              "description": "Limit access to CUI on system media to authorized users. AWS: IAM / S3 policies. Type: Technical. Evidence: terraform/modules/storage.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "4763dc4d-887a-42c0-8818-7a5fe0ba8b8d",
+          "control-id": "3.8.3",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "MP.L2-3.8.3"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "MP - Media Protection"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Admin/Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "oscal/component-definitions/policies.json"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "eba4691d-c124-4a2e-a229-b16e3e792130",
+              "description": "Sanitize or destroy media containing CUI before disposal or reuse. AWS: S3 lifecycle / media destruction. Type: Admin/Technical. Evidence: oscal/component-definitions/policies.json.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "0f7266e7-a55f-4f48-82ac-6a1b6a3b360b",
+          "control-id": "3.8.4",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "MP.L2-3.8.4"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "MP - Media Protection"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Admin"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "oscal/component-definitions/policies.json"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "27159383-354a-47ef-822c-155ef18ca070",
+              "description": "Mark media with necessary CUI markings and distribution limitations. AWS: Data classification / tagging. Type: Admin. Evidence: oscal/component-definitions/policies.json.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "5cdd5a6b-1e5f-4ca1-988b-4a3086df796b",
+          "control-id": "3.8.5",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "MP.L2-3.8.5"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "MP - Media Protection"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Admin"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "oscal/component-definitions/policies.json"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "f2dcd768-36af-42e6-9b9b-629534849e3d",
+              "description": "Control access to media and maintain accountability during transport. AWS: Process. Type: Admin. Evidence: oscal/component-definitions/policies.json.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "53ee76e7-bb1d-48a1-a133-b4eade392c06",
+          "control-id": "3.8.6",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "MP.L2-3.8.6"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "MP - Media Protection"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "terraform/modules/storage"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "9f9919f4-071b-4a11-9079-bd1dc59fca78",
+              "description": "Implement cryptographic protection of CUI on digital media during transport. AWS: KMS / TLS. Type: Technical. Evidence: terraform/modules/storage.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "6d89d5a4-da85-454b-b99d-0677d681c504",
+          "control-id": "3.8.7",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "MP.L2-3.8.7"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "MP - Media Protection"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Admin"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "oscal/component-definitions/policies.json"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "ba94d897-bbbe-46f9-a01c-4219d0736b90",
+              "description": "Control the use of removable media on system components. AWS: Endpoint policy. Type: Admin. Evidence: oscal/component-definitions/policies.json.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "94fa20b3-12a5-4ee3-8353-5ad82b0955ee",
+          "control-id": "3.8.8",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "MP.L2-3.8.8"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "MP - Media Protection"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Admin"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "oscal/component-definitions/policies.json"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "4beec6c7-a300-4cc1-bd13-8da575479b9d",
+              "description": "Prohibit use of portable storage devices with no identifiable owner. AWS: Endpoint policy. Type: Admin. Evidence: oscal/component-definitions/policies.json.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "27cbde40-8bef-4154-81f7-9a510ef0e82d",
+          "control-id": "3.8.9",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "MP.L2-3.8.9"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "MP - Media Protection"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "terraform/modules/storage"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "b8d8ab1e-2a9e-4d54-8e47-2da47555e295",
+              "description": "Protect the confidentiality of backup CUI at storage locations. AWS: AWS Backup / S3 / KMS. Type: Technical. Evidence: terraform/modules/storage.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "c2d4debb-fd59-44cc-b420-d18a30d48b19",
+          "control-id": "3.9.1",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "PS.L2-3.9.1"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "PS - Personnel Security"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Admin"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "oscal/component-definitions/policies.json"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "cf5981c6-8978-4ede-80f7-cf6e97542758",
+              "description": "Screen individuals prior to authorizing access to CUI. AWS: HR process. Type: Admin. Evidence: oscal/component-definitions/policies.json.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "23af07da-8ec3-4ade-bb19-fa574c7a841f",
+          "control-id": "3.9.2",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "PS.L2-3.9.2"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "PS - Personnel Security"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Admin/Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "oscal/component-definitions/policies.json"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "8bd9d8f4-1ea2-42cf-8cac-6419ffcd2f37",
+              "description": "Protect CUI during and after personnel actions (termination/transfer). AWS: IAM offboarding automation. Type: Admin/Technical. Evidence: oscal/component-definitions/policies.json.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "c1b63325-7f35-4dfc-842d-f7cd692ab154",
+          "control-id": "3.10.1",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "PE.L2-3.10.1"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "PE - Physical Protection"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Admin"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "oscal/component-definitions/policies.json"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "bb8460b6-aa6c-402d-bf7f-4f98c99992e7",
+              "description": "Limit physical access to systems equipment and operating environments. AWS: AWS data center (inherited). Type: Admin. Evidence: oscal/component-definitions/policies.json.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "2628c362-527e-4d90-a851-d601eded6a5f",
+          "control-id": "3.10.2",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "PE.L2-3.10.2"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "PE - Physical Protection"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Admin"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "oscal/component-definitions/policies.json"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "43a22a67-cce4-4789-9fe6-257cfb5b8e09",
+              "description": "Protect and monitor the physical facility and support infrastructure. AWS: AWS (inherited). Type: Admin. Evidence: oscal/component-definitions/policies.json.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "2c3981fe-95ee-4dbf-907c-5c16e1d0086e",
+          "control-id": "3.10.3",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "PE.L2-3.10.3"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "PE - Physical Protection"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Admin"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "oscal/component-definitions/policies.json"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "4e6a4f25-8f81-47f0-a635-03e6a0ef08e4",
+              "description": "Escort visitors and monitor visitor activity. AWS: AWS (inherited) / office policy. Type: Admin. Evidence: oscal/component-definitions/policies.json.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "e99737ad-ac8f-4095-b2f3-397363668b9f",
+          "control-id": "3.10.4",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "PE.L2-3.10.4"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "PE - Physical Protection"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Admin"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "oscal/component-definitions/policies.json"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "71d680f0-34fc-4f4f-96cd-decf38d19c18",
+              "description": "Maintain audit logs of physical access. AWS: AWS (inherited) / office logs. Type: Admin. Evidence: oscal/component-definitions/policies.json.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "10d7fe1a-68c0-4080-b93d-93dec4dfa7b5",
+          "control-id": "3.10.5",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "PE.L2-3.10.5"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "PE - Physical Protection"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Admin"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "oscal/component-definitions/policies.json"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "80539759-b3de-4008-8ff7-202f4f4b399a",
+              "description": "Control and manage physical access devices. AWS: Office policy. Type: Admin. Evidence: oscal/component-definitions/policies.json.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "ccc994cd-9575-4839-8764-2a29cab1f9a5",
+          "control-id": "3.10.6",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "PE.L2-3.10.6"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "PE - Physical Protection"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Admin"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "oscal/component-definitions/policies.json"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "5610ff0b-c473-4097-b766-7e9165dea22c",
+              "description": "Enforce safeguarding measures for CUI at alternate work sites. AWS: Remote work policy. Type: Admin. Evidence: oscal/component-definitions/policies.json.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "10d301d4-baf6-45dd-9281-00ca08b74379",
+          "control-id": "3.11.1",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "RA.L2-3.11.1"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "RA - Risk Assessment"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Admin/Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "oscal/component-definitions/policies.json"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "a0824283-8b37-4376-a491-f6a3067ed2ab",
+              "description": "Periodically assess risk to operations and assets from system operation. AWS: Security Hub / Inspector. Type: Admin/Technical. Evidence: oscal/component-definitions/policies.json.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "d89d3ad1-f997-4903-9dfd-1fbaff26bda1",
+          "control-id": "3.11.2",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "RA.L2-3.11.2"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "RA - Risk Assessment"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "terraform/modules/security"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "691e01da-a36b-4efd-aa6b-028ff9383dec",
+              "description": "Scan for vulnerabilities periodically and when new ones are identified. AWS: Amazon Inspector / ECR scanning. Type: Technical. Evidence: terraform/modules/security.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "99319a25-90d3-4e54-a635-54e64cc5ea2d",
+          "control-id": "3.11.3",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "RA.L2-3.11.3"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "RA - Risk Assessment"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "oscal/poam/cmmc-l2-poam.json"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "9cf332eb-f6c9-4ab4-847b-ac12f4afacb5",
+              "description": "Remediate vulnerabilities in accordance with risk assessments. AWS: Inspector / SSM Patch / POA&M. Type: Technical. Evidence: oscal/poam/cmmc-l2-poam.json.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "29468fe6-8349-4878-ace8-e6de2d919103",
+          "control-id": "3.12.1",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "CA.L2-3.12.1"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "CA - Security Assessment"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Admin/Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "evidence/automation"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "227796eb-8d2d-4176-a3ec-6909464ef142",
+              "description": "Periodically assess security controls for effectiveness. AWS: Security Hub / Config / Audit Manager. Type: Admin/Technical. Evidence: evidence/automation.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "a1ffa1e2-3561-4396-af8d-32bd22a2f38e",
+          "control-id": "3.12.2",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "CA.L2-3.12.2"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "CA - Security Assessment"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Admin"
+            },
+            {
+              "name": "implementation-status",
+              "value": "partial"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "oscal/poam/cmmc-l2-poam.json"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "d57e173b-edf0-4960-adb3-31cb63f5db94",
+              "description": "Develop and implement plans of action to correct deficiencies. AWS: POA&M. Type: Admin. Evidence: oscal/poam/cmmc-l2-poam.json.",
+              "implementation-status": {
+                "state": "partial"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "8937f153-406e-4438-b6e0-c6223c46a31b",
+          "control-id": "3.12.3",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "CA.L2-3.12.3"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "CA - Security Assessment"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "partial"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "policy-as-code"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "33306388-9d8e-4f21-a444-8fd68371a4a9",
+              "description": "Monitor security controls on an ongoing basis. AWS: Config / Security Hub. Type: Technical. Evidence: policy-as-code.",
+              "implementation-status": {
+                "state": "partial"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "9b6ad8e1-4904-4b98-8117-eb79f89c49b8",
+          "control-id": "3.12.4",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "CA.L2-3.12.4"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "CA - Security Assessment"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Admin"
+            },
+            {
+              "name": "implementation-status",
+              "value": "partial"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "oscal/ssp/cmmc-l2-ssp.json"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "bd918337-b075-4a4d-95a5-baebd7729e34",
+              "description": "Develop document and update System Security Plans. AWS: SSP. Type: Admin. Evidence: oscal/ssp/cmmc-l2-ssp.json.",
+              "implementation-status": {
+                "state": "partial"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "830a07ee-9c1f-4e74-975b-d5a050e28fcc",
+          "control-id": "3.13.1",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "SC.L2-3.13.1"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "SC - System and Communications Protection"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "terraform/modules/networking"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "9b50dc45-eb04-470d-b691-da6f924f732e",
+              "description": "Monitor control and protect communications at system boundaries. AWS: VPC / Security Groups / WAF. Type: Technical. Evidence: terraform/modules/networking.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "2fe47d09-a53f-42c8-a720-b143347e2688",
+          "control-id": "3.13.2",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "SC.L2-3.13.2"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "SC - System and Communications Protection"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "docs/architecture"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "5a454105-d9bb-4dfb-a6fe-9b09269756b2",
+              "description": "Employ architectural designs that promote effective information security. AWS: VPC design / IaC. Type: Technical. Evidence: docs/architecture.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "6dcb6250-fd0c-4f2e-af10-93ff117095ed",
+          "control-id": "3.13.3",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "SC.L2-3.13.3"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "SC - System and Communications Protection"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "docs/architecture"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "55379378-96fb-4e30-a130-f852d36cd075",
+              "description": "Separate user functionality from system management functionality. AWS: Account/VPC separation. Type: Technical. Evidence: docs/architecture.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "b0689bc2-c5ac-4087-bb8d-babbe85691ce",
+          "control-id": "3.13.4",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "SC.L2-3.13.4"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "SC - System and Communications Protection"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "terraform/modules/storage"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "a89382fb-4e1a-4c04-bfb8-9f7852b58879",
+              "description": "Prevent unauthorized and unintended information transfer via shared resources. AWS: IAM / KMS / tenant isolation. Type: Technical. Evidence: terraform/modules/storage.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "fc0b1844-019d-424c-962c-f0f519edbc1d",
+          "control-id": "3.13.5",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "SC.L2-3.13.5"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "SC - System and Communications Protection"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "terraform/modules/networking"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "bf5c639e-baec-47a7-95b9-6f57934004f5",
+              "description": "Implement subnetworks for publicly accessible components. AWS: VPC public/private subnets. Type: Technical. Evidence: terraform/modules/networking.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "146171ba-920b-4015-b8a0-7b1d89fcc66a",
+          "control-id": "3.13.6",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "SC.L2-3.13.6"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "SC - System and Communications Protection"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "terraform/modules/networking"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "e024e1b4-5687-4533-83f0-c98c7e040afd",
+              "description": "Deny network traffic by default and allow by exception. AWS: Security Groups / NACLs. Type: Technical. Evidence: terraform/modules/networking.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "094e039b-56dd-4121-b5e3-8daa635e8ac1",
+          "control-id": "3.13.7",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "SC.L2-3.13.7"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "SC - System and Communications Protection"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "oscal/component-definitions/policies.json"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "f2f76040-ac87-4ab1-a5d5-45e80f17931d",
+              "description": "Prevent split tunneling for remote devices. AWS: VPN config. Type: Technical. Evidence: oscal/component-definitions/policies.json.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "9fc1f70e-073c-4b37-9625-93e42396fc67",
+          "control-id": "3.13.8",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "SC.L2-3.13.8"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "SC - System and Communications Protection"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "partial"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "terraform/modules/storage"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "228e7397-af02-4afe-8fb5-03b8a7f66d4d",
+              "description": "Implement cryptographic mechanisms to protect CUI in transit. AWS: TLS / ACM. Type: Technical. Evidence: terraform/modules/storage.",
+              "implementation-status": {
+                "state": "partial"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "a0a54041-c913-4a16-be95-1f9c56d22df1",
+          "control-id": "3.13.9",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "SC.L2-3.13.9"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "SC - System and Communications Protection"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "terraform/modules/networking"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "f1542a1d-ac66-48e8-acdc-9de5c51e74bb",
+              "description": "Terminate network connections at end of session or after inactivity. AWS: Load balancer / idle timeout. Type: Technical. Evidence: terraform/modules/networking.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "eeceb2d5-a864-46a5-8d89-493eb7175a1d",
+          "control-id": "3.13.10",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "SC.L2-3.13.10"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "SC - System and Communications Protection"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "partial"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "terraform/modules/storage"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "15c06129-6ca4-49f2-b9d4-e3af5366dbea",
+              "description": "Establish and manage cryptographic keys. AWS: AWS KMS. Type: Technical. Evidence: terraform/modules/storage.",
+              "implementation-status": {
+                "state": "partial"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "68087ebd-c8c8-41ac-acbe-058f8dec1a0d",
+          "control-id": "3.13.11",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "SC.L2-3.13.11"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "SC - System and Communications Protection"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "terraform/modules/storage"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "026c0029-b374-4ddf-835c-88aa80455b5f",
+              "description": "Employ FIPS-validated cryptography to protect CUI. AWS: KMS (FIPS endpoints) / ACM. Type: Technical. Evidence: terraform/modules/storage.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "4916f45c-b4a2-4c33-ac6f-7561fe869ef3",
+          "control-id": "3.13.12",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "SC.L2-3.13.12"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "SC - System and Communications Protection"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Admin"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "oscal/component-definitions/policies.json"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "164aaea7-1c52-4d82-a4e3-d18f86201da6",
+              "description": "Prohibit remote activation of collaborative devices and provide indication. AWS: Endpoint policy. Type: Admin. Evidence: oscal/component-definitions/policies.json.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "34a3f281-b464-4d02-a026-63328031bee0",
+          "control-id": "3.13.13",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "SC.L2-3.13.13"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "SC - System and Communications Protection"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "oscal/component-definitions/policies.json"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "dcfa3165-26af-46c3-825b-ad1f2e49b3d8",
+              "description": "Control and monitor use of mobile code. AWS: WAF / app config. Type: Technical. Evidence: oscal/component-definitions/policies.json.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "c81289bc-e855-4da1-ae2a-9a06c3c0c483",
+          "control-id": "3.13.14",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "SC.L2-3.13.14"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "SC - System and Communications Protection"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Admin"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "oscal/component-definitions/policies.json"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "fc2b1046-b5fc-4d2c-a75d-dd61da4803f5",
+              "description": "Control and monitor use of Voice over Internet Protocol. AWS: VoIP policy. Type: Admin. Evidence: oscal/component-definitions/policies.json.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "229496bb-3cde-4f06-94ab-a11212f75917",
+          "control-id": "3.13.15",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "SC.L2-3.13.15"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "SC - System and Communications Protection"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "terraform/modules/storage"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "ad5f7da0-1e4f-495e-b495-47fb45faf23c",
+              "description": "Protect authenticity of communications sessions. AWS: TLS / mutual TLS. Type: Technical. Evidence: terraform/modules/storage.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "0e6107e4-fee0-46ff-8dc6-4c4847084d72",
+          "control-id": "3.13.16",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "SC.L2-3.13.16"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "SC - System and Communications Protection"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "partial"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "terraform/modules/storage"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "1a142b34-c97a-4c5d-94aa-9e5e4a3933ac",
+              "description": "Protect the confidentiality of CUI at rest. AWS: KMS / S3 / EBS encryption. Type: Technical. Evidence: terraform/modules/storage.",
+              "implementation-status": {
+                "state": "partial"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "b63f8e5c-69d7-4dc2-b729-dfd21fd4ed67",
+          "control-id": "3.14.1",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "SI.L2-3.14.1"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "SI - System and Information Integrity"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "terraform/modules/security"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "e8de134c-604d-4886-a592-fef6391d16b8",
+              "description": "Identify report and correct system flaws in a timely manner. AWS: SSM Patch / Inspector. Type: Technical. Evidence: terraform/modules/security.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "81c53c1c-e67c-4a02-8bc9-917d1e57e815",
+          "control-id": "3.14.2",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "SI.L2-3.14.2"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "SI - System and Information Integrity"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "terraform/modules/security"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "2efb1a5e-4a5f-4a1b-a872-b8c1ad970ef2",
+              "description": "Provide protection from malicious code at designated locations. AWS: Endpoint AV / GuardDuty. Type: Technical. Evidence: terraform/modules/security.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "bf67bfaf-ca99-4dbe-b99e-3b1a823b4c01",
+          "control-id": "3.14.3",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "SI.L2-3.14.3"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "SI - System and Information Integrity"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "terraform/modules/security"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "2c197e3a-b0d5-4b8b-863d-228fa81b579e",
+              "description": "Monitor system security alerts and advisories and take action. AWS: Security Hub / SNS / Health. Type: Technical. Evidence: terraform/modules/security.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "d4629878-5074-428e-a027-95974a3408f0",
+          "control-id": "3.14.4",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "SI.L2-3.14.4"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "SI - System and Information Integrity"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "terraform/modules/security"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "ce51a458-cae2-4ded-be4a-71a616b5cfca",
+              "description": "Update malicious code protection mechanisms when new releases are available. AWS: Managed AV / GuardDuty (managed). Type: Technical. Evidence: terraform/modules/security.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "009f212e-2e29-40e9-87fc-9966160d1524",
+          "control-id": "3.14.5",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "SI.L2-3.14.5"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "SI - System and Information Integrity"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "terraform/modules/security"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "101a84c5-617c-42a2-b4f4-f44bbd0416e4",
+              "description": "Perform periodic and real-time scans of the system. AWS: Inspector / GuardDuty. Type: Technical. Evidence: terraform/modules/security.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "6c173299-2d70-4bbc-befe-39d38168e303",
+          "control-id": "3.14.6",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "SI.L2-3.14.6"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "SI - System and Information Integrity"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "terraform/modules/security"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "78881018-582f-4d9a-8b62-e704a8eeb702",
+              "description": "Monitor systems including inbound/outbound traffic to detect attacks. AWS: GuardDuty / VPC Flow Logs. Type: Technical. Evidence: terraform/modules/security.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "56212161-aebd-4fa6-9938-505486336191",
+          "control-id": "3.14.7",
+          "props": [
+            {
+              "name": "cmmc-id",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "SI.L2-3.14.7"
+            },
+            {
+              "name": "domain",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "SI - System and Information Integrity"
+            },
+            {
+              "name": "implementation-type",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "Technical"
+            },
+            {
+              "name": "implementation-status",
+              "value": "planned"
+            },
+            {
+              "name": "evidence-source",
+              "ns": "https://example.com/ns/cmmc",
+              "value": "terraform/modules/security"
+            }
+          ],
+          "by-components": [
+            {
+              "component-uuid": "d14dc027-63ad-4993-b12c-c1b59573fe8b",
+              "uuid": "fb4e23e2-7df9-4241-a284-64ee32f1dd36",
+              "description": "Identify unauthorized use of organizational systems. AWS: GuardDuty / CloudTrail / Config. Type: Technical. Evidence: terraform/modules/security.",
+              "implementation-status": {
+                "state": "planned"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

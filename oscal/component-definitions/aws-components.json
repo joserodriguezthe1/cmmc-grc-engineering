@@ -1,0 +1,383 @@
+{
+  "component-definition": {
+    "uuid": "f56a7a3d-2821-49bc-a876-bce24d5b9533",
+    "metadata": {
+      "title": "CMMC L2 AWS Components",
+      "last-modified": "2026-06-17T00:07:25Z",
+      "version": "0.1",
+      "oscal-version": "1.1.2"
+    },
+    "components": [
+      {
+        "uuid": "e90a9ce0-8591-49e8-99de-f53d1bc48f0a",
+        "type": "service",
+        "title": "AWS CloudTrail & CloudWatch",
+        "description": "AWS CloudTrail & CloudWatch as used in this CMMC L2 environment.",
+        "control-implementations": [
+          {
+            "uuid": "6319e0b5-1068-4108-a5df-ae0fbecb8e17",
+            "source": "../profile/cmmc-l2-profile.json",
+            "description": "Controls satisfied by AWS CloudTrail & CloudWatch.",
+            "implemented-requirements": [
+              {
+                "uuid": "1f63c27f-2fde-47a5-a600-c19a474c39f1",
+                "control-id": "3.1.7",
+                "description": "AC.L2-3.1.7: Prevent non-privileged users from executing privileged functions; capture in audit logs (AWS: IAM / CloudTrail)"
+              },
+              {
+                "uuid": "8fe57a17-ee50-4987-9b95-a4fa8882cb85",
+                "control-id": "3.3.1",
+                "description": "AU.L2-3.3.1: Create and retain system audit logs sufficient for monitoring and investigation (AWS: CloudTrail / CloudWatch Logs / S3)"
+              },
+              {
+                "uuid": "893e3f33-8b71-4b29-a47b-bfae9d323044",
+                "control-id": "3.3.2",
+                "description": "AU.L2-3.3.2: Ensure actions can be traced to individual users for accountability (AWS: CloudTrail (identity) / IAM)"
+              },
+              {
+                "uuid": "e111149a-e74b-43f3-bf53-4c6351bfc13c",
+                "control-id": "3.3.4",
+                "description": "AU.L2-3.3.4: Alert in the event of an audit logging process failure (AWS: CloudWatch Alarms / SNS)"
+              },
+              {
+                "uuid": "b1105c48-3125-47f1-bb45-b919e64fc1c4",
+                "control-id": "3.3.7",
+                "description": "AU.L2-3.3.7: Provide a system capability that compares to an authoritative time source (AWS: Amazon Time Sync / NTP)"
+              },
+              {
+                "uuid": "35b6b84c-caec-4b90-a314-68cc1b626502",
+                "control-id": "3.3.8",
+                "description": "AU.L2-3.3.8: Protect audit information and tools from unauthorized access/modification (AWS: S3 Object Lock / KMS / IAM)"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "uuid": "9ae16a4a-0912-4b9b-999a-5c40d329450c",
+        "type": "service",
+        "title": "AWS Config",
+        "description": "AWS Config as used in this CMMC L2 environment.",
+        "control-implementations": [
+          {
+            "uuid": "dde89959-94d5-486a-a453-4b4a1382119b",
+            "source": "../profile/cmmc-l2-profile.json",
+            "description": "Controls satisfied by AWS Config.",
+            "implemented-requirements": [
+              {
+                "uuid": "9dbd6da8-1928-4859-a424-25b4c2aa2f60",
+                "control-id": "3.4.1",
+                "description": "CM.L2-3.4.1: Establish and maintain baseline configurations and inventories (AWS: Config / Systems Manager Inventory)"
+              },
+              {
+                "uuid": "d0c8c54f-dc2a-4fed-ba5f-0c3064eb18a3",
+                "control-id": "3.4.2",
+                "description": "CM.L2-3.4.2: Establish and enforce security configuration settings (AWS: Config Rules / SSM State Manager)"
+              },
+              {
+                "uuid": "03ea26e2-0226-4f8e-88af-25575034112d",
+                "control-id": "3.12.3",
+                "description": "CA.L2-3.12.3: Monitor security controls on an ongoing basis (AWS: Config / Security Hub)"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "uuid": "85227801-f1f1-42e0-b098-1a46f3e4557a",
+        "type": "service",
+        "title": "AWS GuardDuty / Security Hub / Budgets",
+        "description": "AWS GuardDuty / Security Hub / Budgets as used in this CMMC L2 environment.",
+        "control-implementations": [
+          {
+            "uuid": "015c1df0-ea32-4c7b-a3e6-b364a6c63aa2",
+            "source": "../profile/cmmc-l2-profile.json",
+            "description": "Controls satisfied by AWS GuardDuty / Security Hub / Budgets.",
+            "implemented-requirements": [
+              {
+                "uuid": "efce36fd-32da-4711-97bd-621e86d3cd96",
+                "control-id": "3.1.12",
+                "description": "AC.L2-3.1.12: Monitor and control remote access sessions (AWS: VPN / Systems Manager Session Manager)"
+              },
+              {
+                "uuid": "83eff27b-f742-4c44-88c1-313738f57ff9",
+                "control-id": "3.1.13",
+                "description": "AC.L2-3.1.13: Use cryptographic mechanisms to protect remote access sessions (AWS: TLS / SSM Session Manager)"
+              },
+              {
+                "uuid": "32cd2908-dcd0-403b-aceb-07def3d802a8",
+                "control-id": "3.3.5",
+                "description": "AU.L2-3.3.5: Correlate audit review/analysis for investigation and response (AWS: CloudWatch Logs Insights / Security Hub)"
+              },
+              {
+                "uuid": "f6d47bde-d427-4ead-a98b-a39e26af21eb",
+                "control-id": "3.7.5",
+                "description": "MA.L2-3.7.5: Require MFA to establish nonlocal maintenance sessions (AWS: SSM Session Manager / MFA)"
+              },
+              {
+                "uuid": "c66266f7-5c02-4315-8a73-134e8a0c2336",
+                "control-id": "3.11.2",
+                "description": "RA.L2-3.11.2: Scan for vulnerabilities periodically and when new ones are identified (AWS: Amazon Inspector / ECR scanning)"
+              },
+              {
+                "uuid": "6dab1024-c9bf-4354-bee8-1d63cf296957",
+                "control-id": "3.14.1",
+                "description": "SI.L2-3.14.1: Identify report and correct system flaws in a timely manner (AWS: SSM Patch / Inspector)"
+              },
+              {
+                "uuid": "4022816b-9b5e-41ea-9173-ba1bf0495ce4",
+                "control-id": "3.14.2",
+                "description": "SI.L2-3.14.2: Provide protection from malicious code at designated locations (AWS: Endpoint AV / GuardDuty)"
+              },
+              {
+                "uuid": "21aba3bd-23d3-44f1-bb1d-7e96dfdbd951",
+                "control-id": "3.14.3",
+                "description": "SI.L2-3.14.3: Monitor system security alerts and advisories and take action (AWS: Security Hub / SNS / Health)"
+              },
+              {
+                "uuid": "53055c62-b590-416f-99ce-b91a49ca2814",
+                "control-id": "3.14.4",
+                "description": "SI.L2-3.14.4: Update malicious code protection mechanisms when new releases are available (AWS: Managed AV / GuardDuty (managed))"
+              },
+              {
+                "uuid": "382a6202-e695-4587-b917-93adab10d005",
+                "control-id": "3.14.5",
+                "description": "SI.L2-3.14.5: Perform periodic and real-time scans of the system (AWS: Inspector / GuardDuty)"
+              },
+              {
+                "uuid": "904e06be-be74-4a6d-aff2-883ee2b21297",
+                "control-id": "3.14.6",
+                "description": "SI.L2-3.14.6: Monitor systems including inbound/outbound traffic to detect attacks (AWS: GuardDuty / VPC Flow Logs)"
+              },
+              {
+                "uuid": "d9f3ed02-884d-43ed-a84b-d85b96c3e95c",
+                "control-id": "3.14.7",
+                "description": "SI.L2-3.14.7: Identify unauthorized use of organizational systems (AWS: GuardDuty / CloudTrail / Config)"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "uuid": "46bb5185-0612-4ff0-b796-7c757003af12",
+        "type": "service",
+        "title": "AWS IAM",
+        "description": "AWS IAM as used in this CMMC L2 environment.",
+        "control-implementations": [
+          {
+            "uuid": "62310c14-e34b-4dc1-b592-6797dbbf3a3c",
+            "source": "../profile/cmmc-l2-profile.json",
+            "description": "Controls satisfied by AWS IAM.",
+            "implemented-requirements": [
+              {
+                "uuid": "967882c6-6e53-4bcc-b405-aa4feac76d43",
+                "control-id": "3.1.1",
+                "description": "AC.L2-3.1.1: Limit system access to authorized users and devices (AWS: IAM / SSO / Organizations)"
+              },
+              {
+                "uuid": "8e373352-cf50-4c8b-8ec7-8f3c73cd0348",
+                "control-id": "3.1.2",
+                "description": "AC.L2-3.1.2: Limit access to the types of transactions and functions authorized users may execute (AWS: IAM policies / SCPs)"
+              },
+              {
+                "uuid": "484af835-5063-4a11-961c-b426b5dfee6d",
+                "control-id": "3.1.4",
+                "description": "AC.L2-3.1.4: Separate the duties of individuals to reduce risk of malevolent activity (AWS: IAM roles / permission boundaries)"
+              },
+              {
+                "uuid": "c6ad54d7-dcc9-49d7-b109-deb5d28bea28",
+                "control-id": "3.1.5",
+                "description": "AC.L2-3.1.5: Employ least privilege including for privileged accounts (AWS: IAM Access Analyzer / permission boundaries)"
+              },
+              {
+                "uuid": "3e0a733e-55d5-46ce-9bfe-a05a7f59729b",
+                "control-id": "3.1.11",
+                "description": "AC.L2-3.1.11: Terminate user sessions after a defined condition (AWS: IAM session duration / STS)"
+              },
+              {
+                "uuid": "d20d40b0-8f4a-4cca-afed-766596e5ce15",
+                "control-id": "3.3.9",
+                "description": "AU.L2-3.3.9: Limit management of audit logging to a subset of privileged users (AWS: IAM policies)"
+              },
+              {
+                "uuid": "eb1b9522-542b-402b-ba4c-a20558545cd5",
+                "control-id": "3.4.8",
+                "description": "CM.L2-3.4.8: Apply deny-by-exception (blacklist) or permit-by-exception (whitelist) policy (AWS: SCPs / Security Groups)"
+              },
+              {
+                "uuid": "fb86618c-9591-4021-bf5f-e6a2684939d5",
+                "control-id": "3.5.1",
+                "description": "IA.L2-3.5.1: Identify system users processes and devices (AWS: IAM / IAM Roles / Cognito)"
+              },
+              {
+                "uuid": "ca0aed97-4cb0-4330-9859-22e3ca1c3c92",
+                "control-id": "3.5.2",
+                "description": "IA.L2-3.5.2: Authenticate identities as a prerequisite to system access (AWS: IAM / IdP / Cognito)"
+              },
+              {
+                "uuid": "75e5454b-a9b0-45f6-80ed-85ee3a532f5c",
+                "control-id": "3.5.3",
+                "description": "IA.L2-3.5.3: Use multifactor authentication for privileged and network access (AWS: IAM MFA / IdP MFA)"
+              },
+              {
+                "uuid": "164bc812-a33c-4d0c-bb9a-ecfb860c0251",
+                "control-id": "3.5.4",
+                "description": "IA.L2-3.5.4: Employ replay-resistant authentication mechanisms (AWS: IAM / TLS / TOTP)"
+              },
+              {
+                "uuid": "9bdfb805-b801-46cb-aa00-51ed9f941e63",
+                "control-id": "3.5.7",
+                "description": "IA.L2-3.5.7: Enforce a minimum password complexity (AWS: IAM password policy)"
+              },
+              {
+                "uuid": "d72193ca-ac3a-4f1e-abba-8ab99fc65d9e",
+                "control-id": "3.5.8",
+                "description": "IA.L2-3.5.8: Prohibit password reuse for a specified number of generations (AWS: IAM password policy)"
+              },
+              {
+                "uuid": "e0914543-7460-4238-83c6-3098d479a667",
+                "control-id": "3.5.9",
+                "description": "IA.L2-3.5.9: Allow temporary password use with immediate change to permanent (AWS: IAM password policy)"
+              },
+              {
+                "uuid": "adbe5980-4fef-4cf5-aa81-abbe16106aaf",
+                "control-id": "3.5.10",
+                "description": "IA.L2-3.5.10: Store and transmit only cryptographically-protected passwords (AWS: IAM / KMS / TLS)"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "uuid": "57bd663f-3feb-46ad-8de0-aebb9ecfaf07",
+        "type": "service",
+        "title": "AWS KMS & S3",
+        "description": "AWS KMS & S3 as used in this CMMC L2 environment.",
+        "control-implementations": [
+          {
+            "uuid": "21a6d323-a182-4973-b9eb-31fe83c9ef5e",
+            "source": "../profile/cmmc-l2-profile.json",
+            "description": "Controls satisfied by AWS KMS & S3.",
+            "implemented-requirements": [
+              {
+                "uuid": "d71fe6ab-77f7-404d-8ee8-b47fe8c7271b",
+                "control-id": "3.1.3",
+                "description": "AC.L2-3.1.3: Control the flow of CUI in accordance with approved authorizations (AWS: VPC / Security Groups / S3 policies)"
+              },
+              {
+                "uuid": "e4be1ead-2fe7-4325-920c-1ceaeb4b91e6",
+                "control-id": "3.1.22",
+                "description": "AC.L2-3.1.22: Control CUI posted or processed on publicly accessible systems (AWS: S3 Block Public Access / Config)"
+              },
+              {
+                "uuid": "f441f8b8-740a-4b18-8707-0ab671091471",
+                "control-id": "3.8.1",
+                "description": "MP.L2-3.8.1: Protect system media containing CUI (paper and digital) (AWS: KMS / S3 encryption)"
+              },
+              {
+                "uuid": "8943dfd8-fbe6-4244-83eb-52b17816a25e",
+                "control-id": "3.8.2",
+                "description": "MP.L2-3.8.2: Limit access to CUI on system media to authorized users (AWS: IAM / S3 policies)"
+              },
+              {
+                "uuid": "b444d812-bbbd-4f8a-8408-4fd26ad82eb2",
+                "control-id": "3.8.6",
+                "description": "MP.L2-3.8.6: Implement cryptographic protection of CUI on digital media during transport (AWS: KMS / TLS)"
+              },
+              {
+                "uuid": "e5dbfb8c-f5ee-4582-8cb6-7544305d7f77",
+                "control-id": "3.8.9",
+                "description": "MP.L2-3.8.9: Protect the confidentiality of backup CUI at storage locations (AWS: AWS Backup / S3 / KMS)"
+              },
+              {
+                "uuid": "6316878e-949f-4e22-9732-d3c4073e507f",
+                "control-id": "3.13.4",
+                "description": "SC.L2-3.13.4: Prevent unauthorized and unintended information transfer via shared resources (AWS: IAM / KMS / tenant isolation)"
+              },
+              {
+                "uuid": "ec91b72b-9637-46d6-ae3f-f0e6f0d2d2d6",
+                "control-id": "3.13.8",
+                "description": "SC.L2-3.13.8: Implement cryptographic mechanisms to protect CUI in transit (AWS: TLS / ACM)"
+              },
+              {
+                "uuid": "28413eec-f1dc-40dd-97f7-3e95a67df182",
+                "control-id": "3.13.10",
+                "description": "SC.L2-3.13.10: Establish and manage cryptographic keys (AWS: AWS KMS)"
+              },
+              {
+                "uuid": "c40542a5-5bbf-4b5c-b6b5-76e2921df9b9",
+                "control-id": "3.13.11",
+                "description": "SC.L2-3.13.11: Employ FIPS-validated cryptography to protect CUI (AWS: KMS (FIPS endpoints) / ACM)"
+              },
+              {
+                "uuid": "f0502aa6-8638-4b0e-b2f4-8bd6b393d4c3",
+                "control-id": "3.13.15",
+                "description": "SC.L2-3.13.15: Protect authenticity of communications sessions (AWS: TLS / mutual TLS)"
+              },
+              {
+                "uuid": "b2b6af13-979b-481f-9290-746fc100eb1c",
+                "control-id": "3.13.16",
+                "description": "SC.L2-3.13.16: Protect the confidentiality of CUI at rest (AWS: KMS / S3 / EBS encryption)"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "uuid": "de35ce8d-81dc-48ad-9633-a70050253df6",
+        "type": "service",
+        "title": "Amazon VPC",
+        "description": "Amazon VPC as used in this CMMC L2 environment.",
+        "control-implementations": [
+          {
+            "uuid": "75d7dd85-b9e6-41d2-896e-ac23fe2e7125",
+            "source": "../profile/cmmc-l2-profile.json",
+            "description": "Controls satisfied by Amazon VPC.",
+            "implemented-requirements": [
+              {
+                "uuid": "67deea86-bbcb-44ef-ba19-854ba8f5e80b",
+                "control-id": "3.1.14",
+                "description": "AC.L2-3.1.14: Route remote access via managed access control points (AWS: VPC / Transit Gateway / SSM)"
+              },
+              {
+                "uuid": "4ab50d9d-159f-4b49-a382-f33906f47bc0",
+                "control-id": "3.1.20",
+                "description": "AC.L2-3.1.20: Verify and control connections to external systems (AWS: SCPs / S3 policies / VPC endpoints)"
+              },
+              {
+                "uuid": "520fb409-1db7-4163-83e8-6c63833b5931",
+                "control-id": "3.4.6",
+                "description": "CM.L2-3.4.6: Employ least functionality (essential capabilities only) (AWS: Security Groups / SSM)"
+              },
+              {
+                "uuid": "e5c6b580-0b04-4fd6-93e0-7972bcef3e46",
+                "control-id": "3.4.7",
+                "description": "CM.L2-3.4.7: Restrict disable or prevent nonessential programs ports protocols services (AWS: Security Groups / Config)"
+              },
+              {
+                "uuid": "8b5c26a9-b8db-4a56-ac9d-4bb04e8860fd",
+                "control-id": "3.13.1",
+                "description": "SC.L2-3.13.1: Monitor control and protect communications at system boundaries (AWS: VPC / Security Groups / WAF)"
+              },
+              {
+                "uuid": "49e4dadc-b20f-4bf0-ab26-71a095efd8ac",
+                "control-id": "3.13.5",
+                "description": "SC.L2-3.13.5: Implement subnetworks for publicly accessible components (AWS: VPC public/private subnets)"
+              },
+              {
+                "uuid": "3d6460b4-1136-4286-b60a-52295456ec48",
+                "control-id": "3.13.6",
+                "description": "SC.L2-3.13.6: Deny network traffic by default and allow by exception (AWS: Security Groups / NACLs)"
+              },
+              {
+                "uuid": "2dc34f3c-e9af-41f5-8a77-6c3a7084a42f",
+                "control-id": "3.13.9",
+                "description": "SC.L2-3.13.9: Terminate network connections at end of session or after inactivity (AWS: Load balancer / idle timeout)"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

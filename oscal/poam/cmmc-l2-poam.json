@@ -1,0 +1,176 @@
+{
+  "plan-of-action-and-milestones": {
+    "uuid": "257f8a35-4ca3-4cdf-93a2-75338896672e",
+    "metadata": {
+      "title": "CMMC Level 2 Plan of Action & Milestones",
+      "last-modified": "2026-06-17T00:07:25Z",
+      "version": "0.1",
+      "oscal-version": "1.1.2"
+    },
+    "import-ssp": {
+      "href": "../ssp/cmmc-l2-ssp.json"
+    },
+    "poam-items": [
+      {
+        "uuid": "7d41cc31-2ad4-48bb-9041-e33d44b688ee",
+        "title": "POAM-001: System Security Plan is a draft and incomplete",
+        "description": "Remediation: Complete all bracketed sections and obtain owner approval",
+        "props": [
+          {
+            "name": "cmmc-id",
+            "ns": "https://example.com/ns/cmmc",
+            "value": "CA.L2-3.12.4"
+          },
+          {
+            "name": "risk-level",
+            "ns": "https://example.com/ns/cmmc",
+            "value": "Medium"
+          },
+          {
+            "name": "owner",
+            "ns": "https://example.com/ns/cmmc",
+            "value": "[ISSO]"
+          },
+          {
+            "name": "scheduled-completion",
+            "ns": "https://example.com/ns/cmmc",
+            "value": "[YYYY-MM-DD]"
+          },
+          {
+            "name": "status",
+            "ns": "https://example.com/ns/cmmc",
+            "value": "Open"
+          }
+        ]
+      },
+      {
+        "uuid": "87c192ec-f994-4cf5-ab57-2317ae58f5ae",
+        "title": "POAM-002: Log archive immutability (S3 Object Lock) not yet deployed",
+        "description": "Remediation: Deploy logging module with Object Lock in archive account",
+        "props": [
+          {
+            "name": "cmmc-id",
+            "ns": "https://example.com/ns/cmmc",
+            "value": "AU.L2-3.3.8"
+          },
+          {
+            "name": "risk-level",
+            "ns": "https://example.com/ns/cmmc",
+            "value": "High"
+          },
+          {
+            "name": "owner",
+            "ns": "https://example.com/ns/cmmc",
+            "value": "[Cloud Engineer]"
+          },
+          {
+            "name": "scheduled-completion",
+            "ns": "https://example.com/ns/cmmc",
+            "value": "[YYYY-MM-DD]"
+          },
+          {
+            "name": "status",
+            "ns": "https://example.com/ns/cmmc",
+            "value": "Open"
+          }
+        ]
+      },
+      {
+        "uuid": "63ee48aa-f0ac-4f30-b3c1-8c2282b39455",
+        "title": "POAM-003: MFA not enforced for all privileged users",
+        "description": "Remediation: Apply IAM MFA-enforcement policy and verify via credential report",
+        "props": [
+          {
+            "name": "cmmc-id",
+            "ns": "https://example.com/ns/cmmc",
+            "value": "IA.L2-3.5.3"
+          },
+          {
+            "name": "risk-level",
+            "ns": "https://example.com/ns/cmmc",
+            "value": "High"
+          },
+          {
+            "name": "owner",
+            "ns": "https://example.com/ns/cmmc",
+            "value": "[Cloud Engineer]"
+          },
+          {
+            "name": "scheduled-completion",
+            "ns": "https://example.com/ns/cmmc",
+            "value": "[YYYY-MM-DD]"
+          },
+          {
+            "name": "status",
+            "ns": "https://example.com/ns/cmmc",
+            "value": "Open"
+          }
+        ]
+      },
+      {
+        "uuid": "658e9c5f-1bf8-451c-9624-54f14a640e67",
+        "title": "POAM-004: Continuous monitoring (AWS Config conformance pack) not deployed",
+        "description": "Remediation: Deploy conformance pack; address paid-tier cost via scheduled runs",
+        "props": [
+          {
+            "name": "cmmc-id",
+            "ns": "https://example.com/ns/cmmc",
+            "value": "CA.L2-3.12.3"
+          },
+          {
+            "name": "risk-level",
+            "ns": "https://example.com/ns/cmmc",
+            "value": "Medium"
+          },
+          {
+            "name": "owner",
+            "ns": "https://example.com/ns/cmmc",
+            "value": "[Cloud Engineer]"
+          },
+          {
+            "name": "scheduled-completion",
+            "ns": "https://example.com/ns/cmmc",
+            "value": "[YYYY-MM-DD]"
+          },
+          {
+            "name": "status",
+            "ns": "https://example.com/ns/cmmc",
+            "value": "Open"
+          }
+        ]
+      },
+      {
+        "uuid": "accfd54a-2e9f-466d-a4b2-baf14b74fa82",
+        "title": "POAM-005: Security awareness training program not established",
+        "description": "Remediation: Select platform; enroll staff; track completion",
+        "props": [
+          {
+            "name": "cmmc-id",
+            "ns": "https://example.com/ns/cmmc",
+            "value": "AT.L2-3.2.1"
+          },
+          {
+            "name": "risk-level",
+            "ns": "https://example.com/ns/cmmc",
+            "value": "Medium"
+          },
+          {
+            "name": "owner",
+            "ns": "https://example.com/ns/cmmc",
+            "value": "[HR]"
+          },
+          {
+            "name": "scheduled-completion",
+            "ns": "https://example.com/ns/cmmc",
+            "value": "[YYYY-MM-DD]"
+          },
+          {
+            "name": "status",
+            "ns": "https://example.com/ns/cmmc",
+            "value": "Open"
+          }
+        ]
+      }
+    ]
+  }
+}

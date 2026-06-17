@@ -1,0 +1,388 @@
+{
+  "component-definition": {
+    "uuid": "0d50082d-7a6e-447d-a890-48211b8bd470",
+    "metadata": {
+      "title": "CMMC L2 Organizational Policies",
+      "last-modified": "2026-06-17T00:07:25Z",
+      "version": "0.1",
+      "oscal-version": "1.1.2"
+    },
+    "components": [
+      {
+        "uuid": "0f5ee9ff-a5c3-4beb-aa36-c46eab57d96b",
+        "type": "policy",
+        "title": "Access Control Policy",
+        "description": "Organizational policy satisfying administrative practices in the Access Control domain.",
+        "control-implementations": [
+          {
+            "uuid": "3a7e84ac-93b2-4148-957a-94b7e2ea8f5d",
+            "source": "../profile/cmmc-l2-profile.json",
+            "description": "Practices addressed by this policy.",
+            "implemented-requirements": [
+              {
+                "uuid": "dea2ecb7-9807-4b2c-93ec-c8af48b563e5",
+                "control-id": "3.1.6",
+                "description": "AC.L2-3.1.6: Use non-privileged accounts for non-security functions"
+              },
+              {
+                "uuid": "8cd91dbe-2cca-4d54-bc98-d25b81e58c31",
+                "control-id": "3.1.8",
+                "description": "AC.L2-3.1.8: Limit unsuccessful logon attempts"
+              },
+              {
+                "uuid": "4f7dbd3d-f0a8-4220-8188-444c7e5d55ac",
+                "control-id": "3.1.9",
+                "description": "AC.L2-3.1.9: Provide privacy and security notices consistent with CUI rules"
+              },
+              {
+                "uuid": "99e5911a-8a16-4f77-8821-c28c04ef48e8",
+                "control-id": "3.1.10",
+                "description": "AC.L2-3.1.10: Use session lock with pattern-hiding after inactivity"
+              },
+              {
+                "uuid": "978e8ad6-f111-4c3c-91f2-e6517ac3188d",
+                "control-id": "3.1.15",
+                "description": "AC.L2-3.1.15: Authorize remote execution of privileged commands and remote access to security info"
+              },
+              {
+                "uuid": "590348d7-6a74-4732-8cc1-4ca874f7a1ed",
+                "control-id": "3.1.16",
+                "description": "AC.L2-3.1.16: Authorize wireless access prior to allowing connections"
+              },
+              {
+                "uuid": "ff4f00bd-2898-41bb-a0a5-82e9f8f2191a",
+                "control-id": "3.1.17",
+                "description": "AC.L2-3.1.17: Protect wireless access using authentication and encryption"
+              },
+              {
+                "uuid": "b35f26f1-1334-45f6-a545-5a4db236cdd7",
+                "control-id": "3.1.18",
+                "description": "AC.L2-3.1.18: Control connection of mobile devices"
+              },
+              {
+                "uuid": "5730315e-c937-48d9-8744-6fabf630000f",
+                "control-id": "3.1.19",
+                "description": "AC.L2-3.1.19: Encrypt CUI on mobile devices and platforms"
+              },
+              {
+                "uuid": "0405557f-5e58-415a-87ea-1409da3df2fb",
+                "control-id": "3.1.21",
+                "description": "AC.L2-3.1.21: Limit use of portable storage devices on external systems"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "uuid": "120a358c-ab80-4f4f-9bc6-ae79dd8e9dd8",
+        "type": "policy",
+        "title": "Awareness Training Policy",
+        "description": "Organizational policy satisfying administrative practices in the Awareness and Training domain.",
+        "control-implementations": [
+          {
+            "uuid": "947a47ca-f25e-43b2-bf31-14c1f1e9457d",
+            "source": "../profile/cmmc-l2-profile.json",
+            "description": "Practices addressed by this policy.",
+            "implemented-requirements": [
+              {
+                "uuid": "85056a52-4ab6-4eb0-8ace-1c55c625f7fa",
+                "control-id": "3.2.1",
+                "description": "AT.L2-3.2.1: Ensure personnel are aware of security risks and applicable policies"
+              },
+              {
+                "uuid": "e28c19d3-981d-4cfb-abae-14e6df746c01",
+                "control-id": "3.2.2",
+                "description": "AT.L2-3.2.2: Ensure personnel are trained to carry out their security duties"
+              },
+              {
+                "uuid": "16110a6b-4411-470d-b8bd-bdd5fd777140",
+                "control-id": "3.2.3",
+                "description": "AT.L2-3.2.3: Provide security awareness training on recognizing insider threat"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "uuid": "74df876d-4418-4d08-91a4-a79fbc85bd9b",
+        "type": "policy",
+        "title": "Configuration Management Policy",
+        "description": "Organizational policy satisfying administrative practices in the Configuration Management domain.",
+        "control-implementations": [
+          {
+            "uuid": "7f898cd3-8283-41fc-9401-02249c3b3bdc",
+            "source": "../profile/cmmc-l2-profile.json",
+            "description": "Practices addressed by this policy.",
+            "implemented-requirements": [
+              {
+                "uuid": "c5bc677a-3330-4d73-aa2e-f0ba57eebcf3",
+                "control-id": "3.4.9",
+                "description": "CM.L2-3.4.9: Control and monitor user-installed software"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "uuid": "59a12217-4200-4129-b83f-492c6c937a3e",
+        "type": "policy",
+        "title": "Identification Authentication Policy",
+        "description": "Organizational policy satisfying administrative practices in the Identification and Authentication domain.",
+        "control-implementations": [
+          {
+            "uuid": "0a44849b-c0b8-4ea4-8c62-6281552981d6",
+            "source": "../profile/cmmc-l2-profile.json",
+            "description": "Practices addressed by this policy.",
+            "implemented-requirements": [
+              {
+                "uuid": "e8e1e5eb-ef63-4309-9fd3-3b8a6e84de7c",
+                "control-id": "3.5.5",
+                "description": "IA.L2-3.5.5: Prevent reuse of identifiers for a defined period"
+              },
+              {
+                "uuid": "4226f41a-d0c9-49dd-b201-c02dca897c95",
+                "control-id": "3.5.11",
+                "description": "IA.L2-3.5.11: Obscure feedback of authentication information"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "uuid": "a10be0fc-fe16-4e8a-b6e0-068f3340d9df",
+        "type": "policy",
+        "title": "Incident Response Policy",
+        "description": "Organizational policy satisfying administrative practices in the Incident Response domain.",
+        "control-implementations": [
+          {
+            "uuid": "899eb32c-823f-4d0d-b6a2-24a0a6ac267f",
+            "source": "../profile/cmmc-l2-profile.json",
+            "description": "Practices addressed by this policy.",
+            "implemented-requirements": [
+              {
+                "uuid": "911f2691-21fd-4deb-9773-87d22253a674",
+                "control-id": "3.6.1",
+                "description": "IR.L2-3.6.1: Establish an operational incident-handling capability"
+              },
+              {
+                "uuid": "541be8d9-5de2-40bb-aa02-3be10cbe8d9e",
+                "control-id": "3.6.2",
+                "description": "IR.L2-3.6.2: Track document and report incidents to designated officials"
+              },
+              {
+                "uuid": "f4be0f9b-c08f-4b53-9cab-aebf09838132",
+                "control-id": "3.6.3",
+                "description": "IR.L2-3.6.3: Test the organizational incident response capability"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "uuid": "af772e85-4e51-4b21-a6a1-3bccd4de95ec",
+        "type": "policy",
+        "title": "Maintenance Policy",
+        "description": "Organizational policy satisfying administrative practices in the Maintenance domain.",
+        "control-implementations": [
+          {
+            "uuid": "1cfb841e-3128-44e4-9998-6466287fa462",
+            "source": "../profile/cmmc-l2-profile.json",
+            "description": "Practices addressed by this policy.",
+            "implemented-requirements": [
+              {
+                "uuid": "1dab0267-fb4b-4033-9668-688d3d19657e",
+                "control-id": "3.7.1",
+                "description": "MA.L2-3.7.1: Perform maintenance on organizational systems"
+              },
+              {
+                "uuid": "edf5bc31-a0af-4a65-ba73-e0e4004259da",
+                "control-id": "3.7.2",
+                "description": "MA.L2-3.7.2: Provide controls on the tools techniques and personnel used for maintenance"
+              },
+              {
+                "uuid": "fb9ddd26-d2c7-4453-857f-cf117e5ffebd",
+                "control-id": "3.7.3",
+                "description": "MA.L2-3.7.3: Sanitize equipment removed for off-site maintenance of CUI"
+              },
+              {
+                "uuid": "7d40ced2-4256-4f8f-9ce5-f69f33e02342",
+                "control-id": "3.7.4",
+                "description": "MA.L2-3.7.4: Check media containing diagnostic/test programs for malicious code"
+              },
+              {
+                "uuid": "92f01a33-772c-4085-9e3e-b7742852518d",
+                "control-id": "3.7.6",
+                "description": "MA.L2-3.7.6: Supervise maintenance activities of personnel without required access"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "uuid": "2dba4921-e871-42ec-8e3c-244a2ba1ba12",
+        "type": "policy",
+        "title": "Media Protection Policy",
+        "description": "Organizational policy satisfying administrative practices in the Media Protection domain.",
+        "control-implementations": [
+          {
+            "uuid": "5a45ffd4-127a-47ec-af98-d363e12bda7b",
+            "source": "../profile/cmmc-l2-profile.json",
+            "description": "Practices addressed by this policy.",
+            "implemented-requirements": [
+              {
+                "uuid": "64426feb-4925-41ca-9b23-e9a6be10d0e3",
+                "control-id": "3.8.3",
+                "description": "MP.L2-3.8.3: Sanitize or destroy media containing CUI before disposal or reuse"
+              },
+              {
+                "uuid": "1748069e-6308-46fb-8707-d588d496fb6d",
+                "control-id": "3.8.4",
+                "description": "MP.L2-3.8.4: Mark media with necessary CUI markings and distribution limitations"
+              },
+              {
+                "uuid": "a86b81a4-1a10-4dff-949c-2d6278305357",
+                "control-id": "3.8.5",
+                "description": "MP.L2-3.8.5: Control access to media and maintain accountability during transport"
+              },
+              {
+                "uuid": "86af4052-23ac-498a-8f5b-d41d79dd459a",
+                "control-id": "3.8.7",
+                "description": "MP.L2-3.8.7: Control the use of removable media on system components"
+              },
+              {
+                "uuid": "2aa12aca-f6a7-4331-9171-bcce042e8dad",
+                "control-id": "3.8.8",
+                "description": "MP.L2-3.8.8: Prohibit use of portable storage devices with no identifiable owner"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "uuid": "daaf9744-8d31-409f-984a-ee0d790f0e04",
+        "type": "policy",
+        "title": "Personnel Security Policy",
+        "description": "Organizational policy satisfying administrative practices in the Personnel Security domain.",
+        "control-implementations": [
+          {
+            "uuid": "c8bec212-c1ce-43d6-90ac-79db589bc2b1",
+            "source": "../profile/cmmc-l2-profile.json",
+            "description": "Practices addressed by this policy.",
+            "implemented-requirements": [
+              {
+                "uuid": "022e4947-4312-4cbb-bd36-37fd0abe8f07",
+                "control-id": "3.9.1",
+                "description": "PS.L2-3.9.1: Screen individuals prior to authorizing access to CUI"
+              },
+              {
+                "uuid": "4493668b-468e-44af-a147-aaa742467f1e",
+                "control-id": "3.9.2",
+                "description": "PS.L2-3.9.2: Protect CUI during and after personnel actions (termination/transfer)"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "uuid": "de5220af-ca30-40b7-a6b6-fd3148826564",
+        "type": "policy",
+        "title": "Physical Protection Policy",
+        "description": "Organizational policy satisfying administrative practices in the Physical Protection domain.",
+        "control-implementations": [
+          {
+            "uuid": "aa5c6f75-7d47-498b-89c7-8ed35f88d0f6",
+            "source": "../profile/cmmc-l2-profile.json",
+            "description": "Practices addressed by this policy.",
+            "implemented-requirements": [
+              {
+                "uuid": "40fe9b11-be22-454b-bfaf-f38803c82fda",
+                "control-id": "3.10.1",
+                "description": "PE.L2-3.10.1: Limit physical access to systems equipment and operating environments"
+              },
+              {
+                "uuid": "841e4deb-7aad-406a-970b-7f9e7edbfae5",
+                "control-id": "3.10.2",
+                "description": "PE.L2-3.10.2: Protect and monitor the physical facility and support infrastructure"
+              },
+              {
+                "uuid": "eb032730-a604-479e-9eb0-0acc75c0ae11",
+                "control-id": "3.10.3",
+                "description": "PE.L2-3.10.3: Escort visitors and monitor visitor activity"
+              },
+              {
+                "uuid": "d446cb30-b9ad-40c5-81ef-2701cd3a1536",
+                "control-id": "3.10.4",
+                "description": "PE.L2-3.10.4: Maintain audit logs of physical access"
+              },
+              {
+                "uuid": "be889735-a6c8-4128-9833-1faf18374e43",
+                "control-id": "3.10.5",
+                "description": "PE.L2-3.10.5: Control and manage physical access devices"
+              },
+              {
+                "uuid": "2df462fa-b00f-4cd0-a166-aa22bd4a87b2",
+                "control-id": "3.10.6",
+                "description": "PE.L2-3.10.6: Enforce safeguarding measures for CUI at alternate work sites"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "uuid": "acb90381-a3d4-4a0e-99fe-306b0c8b6533",
+        "type": "policy",
+        "title": "Risk Assessment Policy",
+        "description": "Organizational policy satisfying administrative practices in the Risk Assessment domain.",
+        "control-implementations": [
+          {
+            "uuid": "0e912356-3cb7-43b5-bacc-d34e4cb6f30b",
+            "source": "../profile/cmmc-l2-profile.json",
+            "description": "Practices addressed by this policy.",
+            "implemented-requirements": [
+              {
+                "uuid": "87d71ab8-19c2-4df2-bd86-6fee06ab2c64",
+                "control-id": "3.11.1",
+                "description": "RA.L2-3.11.1: Periodically assess risk to operations and assets from system operation"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "uuid": "b6e7956e-a598-433d-ac58-f4cbeb4fc05e",
+        "type": "policy",
+        "title": "System & Communications Protection Policy",
+        "description": "Organizational policy satisfying administrative practices in the System and Communications Protection domain.",
+        "control-implementations": [
+          {
+            "uuid": "df55a782-d7b6-401b-88a7-451fd950052a",
+            "source": "../profile/cmmc-l2-profile.json",
+            "description": "Practices addressed by this policy.",
+            "implemented-requirements": [
+              {
+                "uuid": "e51f4f21-86c8-45a4-a9dd-4a1edfcc3c51",
+                "control-id": "3.13.7",
+                "description": "SC.L2-3.13.7: Prevent split tunneling for remote devices"
+              },
+              {
+                "uuid": "1c0eabb7-b9b0-4ba4-9f44-4154c4d887fe",
+                "control-id": "3.13.12",
+                "description": "SC.L2-3.13.12: Prohibit remote activation of collaborative devices and provide indication"
+              },
+              {
+                "uuid": "82dc7cde-e12d-42c6-b705-1c837c138194",
+                "control-id": "3.13.13",
+                "description": "SC.L2-3.13.13: Control and monitor use of mobile code"
+              },
+              {
+                "uuid": "1bca5e8b-66ff-4f57-9ecb-1d235f5ca986",
+                "control-id": "3.13.14",
+                "description": "SC.L2-3.13.14: Control and monitor use of Voice over Internet Protocol"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
