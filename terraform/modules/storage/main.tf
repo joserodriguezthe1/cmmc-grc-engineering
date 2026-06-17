@@ -6,12 +6,64 @@
 # =============================================================================
 
 data "aws_caller_identity" "current" {}
+data "aws_region" "current" {}
 
 # --- SC.L2-3.13.10 : Customer-managed KMS key for CUI ------------------------
 resource "aws_kms_key" "cui" {
   description             = "${var.name_prefix} CUI encryption key (SC.L2-3.13.10)"
   deletion_window_in_days = 30
   enable_key_rotation     = true
+  policy                  = data.aws_iam_policy_document.kms.json
+}
+
+# Key policy: account admin + scoped grants so CloudWatch Logs and CloudTrail
+# may use the CMK to encrypt the audit log group and trail (AU.L2-3.3.8).
+data "aws_iam_policy_document" "kms" {
+  statement {
+    sid       = "EnableRootAccount"
+    effect    = "Allow"
+    actions   = ["kms:*"]
+    resources = ["*"]
+    principals {
+      type        = "AWS"
+      identifiers = ["arn:aws:iam::${data.aws_caller_identity.current.account_id}:root"]
+    }
+  }
+
+  statement {
+    sid    = "AllowCloudWatchLogs"
+    effect = "Allow"
+    actions = [
+      "kms:Encrypt", "kms:Decrypt", "kms:ReEncrypt*",
+      "kms:GenerateDataKey*", "kms:DescribeKey",
+    ]
+    resources = ["*"]
+    principals {
+      type        = "Service"
+      identifiers = ["logs.${data.aws_region.current.name}.amazonaws.com"]
+    }
+    condition {
+      test     = "ArnLike"
+      variable = "kms:EncryptionContext:aws:logs:arn"
+      values   = ["arn:aws:logs:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:log-group:*"]
+    }
+  }
+
+  statement {
+    sid       = "AllowCloudTrail"
+    effect    = "Allow"
+    actions   = ["kms:GenerateDataKey*", "kms:DescribeKey", "kms:Decrypt"]
+    resources = ["*"]
+    principals {
+      type        = "Service"
+      identifiers = ["cloudtrail.amazonaws.com"]
+    }
+    condition {
+      test     = "StringLike"
+      variable = "kms:EncryptionContext:aws:cloudtrail:arn"
+      values   = ["arn:aws:cloudtrail:*:${data.aws_caller_identity.current.account_id}:trail/*"]
+    }
+  }
 }
 
 resource "aws_kms_alias" "cui" {
