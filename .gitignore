@@ -1,0 +1,43 @@
+# Terraform
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log
+*.tfvars
+*.tfvars.json
+!example.tfvars
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraform.lock.hcl
+*.tfplan
+
+# AWS / credentials — never commit secrets
+.aws/
+credentials
+*.pem
+*.key
+aws-exports.js
+
+# Collected evidence may contain account IDs / ARNs — keep out of git by default
+evidence/collected/*
+!evidence/collected/.gitkeep
+
+# Cached OSCAL schema (downloaded by scripts/validate_oscal.py)
+scripts/.oscal_complete_schema.json
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
